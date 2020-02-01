@@ -7,33 +7,37 @@ public class HoleApparition : MonoBehaviour
     public GameObject PrefabHole;
     private Transform rt;
     List<GameObject> Holes = new List<GameObject>();
-    public float apparitionTimeStart = 8.0f;
-    public float apparitionTimeEnd = 2.0f;
-    public float apparitionTimeReduceValue = 0.3f;
-    public float apparitionTime = 8.0f;
+    private float apparitionTime = 2f;
+    private float _timerApparition = 0.0f;
+    private static float apparitionReduceValue = 0.3f;
+    private float _reduceValueApparition = 60f;
+    private float _timerReduceValue = 0.0f;
     float Width = 0f;
     float Height = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        Width = 3.0f;
-        Height = 3.0f;
+        Width = 10.0f;
+        Height = 4.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        apparitionTime -= Time.deltaTime;
-        if (apparitionTime < 0)
+        _timerApparition += Time.deltaTime;
+        if (_timerApparition >= apparitionTime)
         {
+            _timerApparition = 0f;
+            Debug.Log("Create a Hole");
             CreateAHole();
-            if (apparitionTimeStart > apparitionTimeEnd)
-            {
-                Debug.Log(apparitionTimeStart);
-                apparitionTimeStart -= apparitionTimeReduceValue;
-                apparitionTime = apparitionTimeStart;
-            }
+        }
+
+        _timerReduceValue += Time.deltaTime;
+        if (_timerReduceValue >= _reduceValueApparition)
+        {
+            _timerReduceValue = 0f;
+            apparitionTime -= apparitionReduceValue;
         }
     }
 
@@ -48,14 +52,8 @@ public class HoleApparition : MonoBehaviour
 
             for (int i = 0; i < Holes.Count; i++)
             {
-                //RectTransform rtTemp = (RectTransform)Holes[i].transform;
-                Debug.Log("X = " + x + " & Y = " + y);
-                Debug.Log("Holes[i]X = " + Holes[i].transform.position.x + " & Holes[i]Y = " + Holes[i].transform.position.y);
-                Debug.Log("ABS x = " + Mathf.Abs((x - Holes[i].transform.position.x)));
-                Debug.Log("ABS y = " + Mathf.Abs((y - Holes[i].transform.position.y)));
-
-                if ((Mathf.Abs((x - Holes[i].transform.position.x)) < 0.2f)
-                    || (Mathf.Abs((y - Holes[i].transform.position.y)) < 0.2f))
+                if ((Mathf.Abs((x - Holes[i].transform.position.x)) < 0.3f)
+                    || (Mathf.Abs((y - Holes[i].transform.position.y)) < 0.3f))
                 {
                     x = Random.Range(-Width, Width);
                     y = Random.Range(-Height, Height);
