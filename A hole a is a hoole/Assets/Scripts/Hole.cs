@@ -13,7 +13,7 @@ public class Hole : MonoBehaviour
         _assignedKey = AssignKey.Instance.GetRandomKey();
 
         Debug.Log("KEY TO PRESS: " + _assignedKey);
-        _pressedKeyboard = new InputAction("press", binding: "<Keyboard>/" + _assignedKey,
+        _pressedKeyboard = new InputAction("press", binding: "<Keyboard>/#(" + _assignedKey + ")",
             interactions: "hold(duration=" + RepairTime.Instance.GetRepairTime().ToString() + ")");
         _pressedKeyboard.started += _ => HasStartedToPress();
         _pressedKeyboard.performed += _ => FinishedToPress();
