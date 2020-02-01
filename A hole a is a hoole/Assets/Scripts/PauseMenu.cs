@@ -29,11 +29,13 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0;
             PauseMenuPanel.SetActive(true);
             GetComponent<WaterMove>().waterMoving = false;
+            GetComponent<ScoringManager>().scoreMove = false;
         }
         else
         {
             Time.timeScale = 1;
             PauseMenuPanel.SetActive(false);
+            GetComponent<ScoringManager>().scoreMove = true;
             GetComponent<WaterMove>().waterMoving = true;
         }
     }

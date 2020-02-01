@@ -36,6 +36,7 @@ public class WaterMove : MonoBehaviour
         Vector3 tmp = new Vector3(0, -12.5f, 0);
         waterWall.transform.position = tmp;
         screenSizeMin = waterWall.transform.position.y;
+        waterMoving = false;
     }
 
     // Update is called once per frame
