@@ -15,6 +15,7 @@ public class WaterMove : MonoBehaviour
     private float waterSpeedMax = 0.002f;
     private float screenSizeMax = -2.40f;
     private float screenSizeMin = -12.5f;
+    private int holeCounter = 0;
 
     private void Awake()
     {
@@ -107,4 +108,13 @@ public class WaterMove : MonoBehaviour
         }
     }
 
+    public void ModifyHoleCounter(int modifier)
+    {
+        int nbrOfHole = GameObject.FindGameObjectsWithTag("KeyPad").Length;
+        holeCounter += modifier;
+        if (holeCounter == nbrOfHole)
+            waterMoving = false;
+        else
+            waterMoving = true;
+    }
 }

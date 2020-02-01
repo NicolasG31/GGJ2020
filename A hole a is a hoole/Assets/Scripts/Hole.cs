@@ -29,6 +29,7 @@ public class Hole : MonoBehaviour
 
         Debug.Log("Assigned key: " + _assignedKey);
         _holeVisual.StartHole(_assignedKey.ToUpper());
+        WaterMove.Instance.ModifyHoleCounter(0);
     }
 
     private void OnDestroy()
@@ -57,6 +58,7 @@ public class Hole : MonoBehaviour
         Debug.Log("BEGIN TO PRESS CORRECT KEY");
         _isPressingKey = true;
         _holeVisual.StopSpill();
+        WaterMove.Instance.ModifyHoleCounter(1);
     }
 
     private IEnumerator FinishedToPress()
@@ -68,12 +70,15 @@ public class Hole : MonoBehaviour
         _pressedKeyboard.Disable();
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
+        yield return new WaitForSeconds(0.1f);
+        WaterMove.Instance.ModifyHoleCounter(-1);
     }
 
     private void CancelledPress()
     {
         _isPressingKey = false;
         _holeVisual.Spill();
+        WaterMove.Instance.ModifyHoleCounter(-1);
         Debug.Log("CANCEL TO PRESS KEY");
     }
 }
