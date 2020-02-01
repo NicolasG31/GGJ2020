@@ -9,7 +9,7 @@ public class RepairTime : MonoBehaviour
     public static RepairTime Instance { get { return _instance; } }
 
     private float _timer = 0.0f;
-    private static float _timeBetweenChanges = 60f;
+    private static float _timeBetweenChanges = 30f;
     private float _timeToRepair = 5.0f;
 
     private void Awake()
@@ -29,12 +29,14 @@ public class RepairTime : MonoBehaviour
         _timer += Time.deltaTime;
         if (_timer >= _timeBetweenChanges && _timeToRepair > 0.2f)
         {
-            _timeToRepair -= 0.3f;
+            _timeToRepair -= 0.2f;
+            _timer = 0f;
         }
     }
 
     public float GetRepairTime()
     {
+        Debug.Log("Time to repair: " + _timeToRepair);
         return (_timeToRepair);
     }
 }

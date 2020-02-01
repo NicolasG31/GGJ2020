@@ -19,15 +19,16 @@ public class Hole : MonoBehaviour
         _totalHoldDuration = RepairTime.Instance.GetRepairTime();
         _holeApparition = FindObjectOfType<HoleApparition>();
 
-        _pressedKeyboard = new InputAction("press", binding: "<Keyboard>/#(" + _assignedKey + ")",
-            interactions: "hold(duration=" + _totalHoldDuration.ToString() + ")");
+        string holdDuration = _totalHoldDuration.ToString("0.0").Replace(",", ".");
+        Debug.Log("Assigned Key: " + _assignedKey + " holdDuration: " + holdDuration);
+        _pressedKeyboard = new InputAction("press" + _assignedKey, binding: "<Keyboard>/#(" + _assignedKey + ")",
+            interactions: "hold(duration=" + holdDuration + ")");
         _pressedKeyboard.started += _ => HasStartedToPress();
         _pressedKeyboard.canceled += _ => CancelledPress();
         _pressedKeyboard.Enable();
 
         _holeVisual = GetComponent<HoleVisual>();
 
-        Debug.Log("Assigned key: " + _assignedKey);
         _holeVisual.StartHole(_assignedKey.ToUpper());
         WaterMove.Instance.ModifyHoleCounter(0);
     }
@@ -55,7 +56,6 @@ public class Hole : MonoBehaviour
 
     private void HasStartedToPress()
     {
-        Debug.Log("BEGIN TO PRESS CORRECT KEY");
         _isPressingKey = true;
         _holeVisual.StopSpill();
         WaterMove.Instance.ModifyHoleCounter(1);
@@ -65,7 +65,6 @@ public class Hole : MonoBehaviour
     {
         _holeApparition.DestroyAHole(gameObject);
         _isPressingKey = false;
-        Debug.Log("FINISHED TO PRESS CORRECT KEY");
         _holeVisual.StopHole();
         _pressedKeyboard.Disable();
         yield return new WaitForSeconds(5f);
@@ -79,6 +78,5 @@ public class Hole : MonoBehaviour
         _isPressingKey = false;
         _holeVisual.Spill();
         WaterMove.Instance.ModifyHoleCounter(-1);
-        Debug.Log("CANCEL TO PRESS KEY");
     }
 }

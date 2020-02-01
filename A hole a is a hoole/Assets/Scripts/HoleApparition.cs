@@ -10,7 +10,7 @@ public class HoleApparition : MonoBehaviour
     public float apparitionTime = 8f;
     private float _timerApparition = 0.0f;
     private static float apparitionReduceValue = 0.3f;
-    private float _reduceValueApparition = 60f;
+    private float _reduceValueApparition = 20f;
     private float _timerReduceValue = 0.0f;
     float Width = 0f;
     float Height = 0f;
@@ -29,7 +29,6 @@ public class HoleApparition : MonoBehaviour
         if (_timerApparition >= apparitionTime)
         {
             _timerApparition = 0f;
-            Debug.Log("Create a Hole");
             CreateAHole();
         }
 
@@ -45,7 +44,6 @@ public class HoleApparition : MonoBehaviour
     {
         if (Holes.Count < 10)
         {
-            Debug.Log("I create a hole");
             rt = PrefabHole.transform;
             float x = Random.Range(-Width, Width);
             float y = Random.Range(-Height, Height);
@@ -74,7 +72,6 @@ public class HoleApparition : MonoBehaviour
             Holes.Remove(Hole);
             GetComponent<WaterMove>().ReduceWaterSpeed();
             GetComponent<ScoringManager>().IncreaseScore(100);
-            Debug.Log("Remove a hole !");
         }
         if (Holes.Count == 0)
             GetComponent<WaterMove>().waterMoving = false;
