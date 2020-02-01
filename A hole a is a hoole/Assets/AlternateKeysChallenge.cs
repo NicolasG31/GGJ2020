@@ -54,7 +54,10 @@ public class AlternateKeysChallenge : MonoBehaviour
         }
 
         if (_challengeIsPlaying)
+        {
             _limitTimer += Time.deltaTime;
+            MiniGameScript.Instance.SetProgress((int)((_limitTimer / _timeOfLimit) * 100));
+        }
 
         if (_limitTimer >= _timeOfLimit)
         {
@@ -98,9 +101,9 @@ public class AlternateKeysChallenge : MonoBehaviour
             _actualIndex = 1;
         else
         {
-            MiniGameScript.Instance.SetCounterText((_goalOfRepetition - _currentNbrOfRepetition).ToString());
             _currentNbrOfRepetition++;
             _actualIndex = 0;
+            MiniGameScript.Instance.SetCounterText((_goalOfRepetition - _currentNbrOfRepetition).ToString());
         }
 
         if (_currentNbrOfRepetition >= _goalOfRepetition)
@@ -111,23 +114,29 @@ public class AlternateKeysChallenge : MonoBehaviour
 
     private void ChallengeSucceed()
     {
-        ResetChallenge();
+        MiniGameScript.Instance.SetInfoText("Challenge succeeded !");
+        StartCoroutine(ResetChallenge());
+        StartCoroutine(WaterMove.Instance.ReduceWater(0.075f));
         Debug.Log("CHALLENGE SUCCEED");
-        LaunchChallenge();
     }
 
     private void ChallengeFailed()
     {
-        ResetChallenge();
+        MiniGameScript.Instance.SetInfoText("Challenge failed !");
+        StartCoroutine(ResetChallenge());
+        StartCoroutine(WaterMove.Instance.IncreaseWater(-0.025f));
         Debug.Log("CHALLENGE FAILED");
     }
 
-    private void ResetChallenge()
+    private IEnumerator ResetChallenge()
     {
+        _inputAction.ApplyBindingOverride("<Keyboard>/#()");
         _challengeIsPlaying = false;
         _limitTimer = 0.0f;
         _actualIndex = 0;
         _currentNbrOfRepetition = 0;
+        yield return new WaitForSeconds(2f);
         MiniGameScript.Instance.ResetChallengeInfos();
+        MiniGameScript.Instance.gameObject.SetActive(false);
     }
 }

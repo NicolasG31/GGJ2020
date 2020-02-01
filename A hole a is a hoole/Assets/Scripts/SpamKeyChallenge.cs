@@ -17,6 +17,7 @@ public class SpamKeyChallenge : MonoBehaviour
     private float _limitTimer = 0.0f;
     private static float _timeOfLimit = 6f;
     private bool _challengeIsPlaying = false;
+    private string _keyToSpam = "";
 
     private void Start()
     {
@@ -68,43 +69,49 @@ public class SpamKeyChallenge : MonoBehaviour
 
         int unicode = Random.Range(97, 123);
         char character = (char)unicode;
-        string key = character.ToString();
+        _keyToSpam = character.ToString();
 
-        _inputAction.ApplyBindingOverride("<Keyboard>/#(" + key + ")");
+        _inputAction.ApplyBindingOverride("<Keyboard>/#(" + _keyToSpam + ")");
         _challengeIsPlaying = true;
-        MiniGameScript.Instance.SetInfoText("Press the " + key + " key " + _nbrToSpam + " times !");
+        MiniGameScript.Instance.SetInfoText("Press the " + _keyToSpam + " key " + _nbrToSpam + " times !");
         MiniGameScript.Instance.SetProgress(0);
-        MiniGameScript.Instance.SetGameKeys(key);
+        MiniGameScript.Instance.SetGameKeys(_keyToSpam);
         MiniGameScript.Instance.SetCounterText(_nbrToSpam.ToString());
     }
 
     private void HasPressedCorrectKey()
     {
-        MiniGameScript.Instance.SetCounterText((_nbrToSpam - _countOfSpam).ToString());
         _countOfSpam++;
+        MiniGameScript.Instance.SetCounterText((_nbrToSpam - _countOfSpam).ToString());
+        MiniGameScript.Instance.SetInfoText("Press the " + _keyToSpam + " key " + (_nbrToSpam - _countOfSpam).ToString() + " times !");
         if (_countOfSpam >= _nbrToSpam)
             ChallengeSucceed();
     }
 
     private void ChallengeSucceed()
     {
-        ResetChallenge();
+        MiniGameScript.Instance.SetInfoText("Challenge succeeded !");
+        StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.ReduceWater(0.075f));
         Debug.Log("CHALLENGE SUCCEED");
     }
 
     private void ChallengeFailed()
     {
-        ResetChallenge();
+        MiniGameScript.Instance.SetInfoText("Challenge failed !");
+        StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.IncreaseWater(-0.025f));
         Debug.Log("CHALLENGE FAILED");
     }
 
-    private void ResetChallenge()
+    private IEnumerator ResetChallenge()
     {
+        _inputAction.ApplyBindingOverride("<Keyboard>/#()");
+        _keyToSpam = "";
         _countOfSpam = 0;
         _challengeIsPlaying = false;
         _limitTimer = 0.0f;
+        yield return new WaitForSeconds(2f);
         MiniGameScript.Instance.ResetChallengeInfos();
         MiniGameScript.Instance.gameObject.SetActive(false);
     }

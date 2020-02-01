@@ -106,50 +106,70 @@ public class MiniGameScript : MonoBehaviour
             key1.GetComponentInChildren<TextMeshProUGUI>().text = (keys.ToCharArray())[0].ToString();
             key1.SetActive(true);
         }
+        else
+            key1.SetActive(false);
         if (keys.Length > 1)
         {
             key2.GetComponentInChildren<TextMeshProUGUI>().text = (keys.ToCharArray())[1].ToString();
             key2.SetActive(true);
         }
+        else
+            key2.SetActive(false);
         if (keys.Length > 2)
         {
             key3.GetComponentInChildren<TextMeshProUGUI>().text = (keys.ToCharArray())[2].ToString();
             key3.SetActive(true);
         }
+        else
+            key3.SetActive(false);
         if (keys.Length > 3)
         {
             key4.GetComponentInChildren<TextMeshProUGUI>().text = (keys.ToCharArray())[3].ToString();
             key4.SetActive(true);
         }
+        else
+            key4.SetActive(false);
         if (keys.Length > 4)
         {
             key5.GetComponentInChildren<TextMeshProUGUI>().text = (keys.ToCharArray())[4].ToString();
             key5.SetActive(true);
         }
+        else
+            key5.SetActive(false);
         if (keys.Length > 5)
         {
             key6.GetComponentInChildren<TextMeshProUGUI>().text = (keys.ToCharArray())[5].ToString();
             key6.SetActive(true);
         }
+        else
+            key6.SetActive(false);
         if (keys.Length > 6)
         {
             key7.GetComponentInChildren<TextMeshProUGUI>().text = (keys.ToCharArray())[6].ToString();
             key7.SetActive(true);
         }
+        else
+            key7.SetActive(false);
         if (keys.Length > 7)
         {
             key8.GetComponentInChildren<TextMeshProUGUI>().text = (keys.ToCharArray())[7].ToString();
             key8.SetActive(true);
         }
+        else
+            key8.SetActive(false);
         if (keys.Length > 8)
         {
             key9.GetComponentInChildren<TextMeshProUGUI>().text = (keys.ToCharArray())[8].ToString();
             key9.SetActive(true);
         }
+        else
+            key9.SetActive(false);
         if (keys.Length > 9)
         {
             key10.GetComponentInChildren<TextMeshProUGUI>().text = (keys.ToCharArray())[9].ToString();
             key10.SetActive(true);
         }
+        else
+            key10.SetActive(false);
     }
 }

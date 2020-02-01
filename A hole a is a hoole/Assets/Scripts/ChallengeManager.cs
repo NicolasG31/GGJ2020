@@ -27,8 +27,7 @@ public class ChallengeManager : MonoBehaviour
 
     private void Start()
     {
-        //_timeBetweenChallenge = Random.Range(30, 90);
-        _timeBetweenChallenge = 6;
+        _timeBetweenChallenge = Random.Range(30, 90);
     }
 
     private void Update()
@@ -40,8 +39,7 @@ public class ChallengeManager : MonoBehaviour
             while (newChallengeIndex != _currentChallengeIndex)
                 newChallengeIndex = Random.Range(0, _qntOfchallenge);
             _currentChallengeIndex = newChallengeIndex;
-            //LaunchChallenge(_currentChallengeIndex);
-            LaunchChallenge(0);
+            LaunchChallenge(_currentChallengeIndex);
             _timeBetweenChallenge = Random.Range(40, 90);
             _timer = 0.0f;
         }

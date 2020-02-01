@@ -26,6 +26,8 @@ public class Hole : MonoBehaviour
         _pressedKeyboard.Enable();
 
         _holeVisual = GetComponent<HoleVisual>();
+
+        Debug.Log("Assigned key: " + _assignedKey);
         _holeVisual.StartHole(_assignedKey.ToUpper());
     }
 
