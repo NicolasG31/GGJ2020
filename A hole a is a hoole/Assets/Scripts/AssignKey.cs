@@ -33,7 +33,7 @@ public class AssignKey : MonoBehaviour
 
         while (_alreadyAssignedKey.Contains(key))
         {
-            int unicode = Random.Range(65, 90);
+            int unicode = Random.Range(97, 122);
             char character = (char)unicode;
             key = character.ToString();
         }

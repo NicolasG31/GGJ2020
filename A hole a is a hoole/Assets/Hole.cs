@@ -6,21 +6,39 @@ using UnityEngine.InputSystem;
 public class Hole : MonoBehaviour
 {
     private string _assignedKey = "";
+    private float _timeOfPress = 1f;
+    private InputAction _pressedKeyboard;
 
     void Start()
     {
         _assignedKey = AssignKey.Instance.GetRandomKey();
 
-        InputAction pressedKeyboard = new InputAction();
+        Debug.Log("KEY TO PRESS: " + _assignedKey);
+        _pressedKeyboard = new InputAction("press", binding: "<Keyboard>/" + _assignedKey,
+            interactions: "hold(duration=" + _timeOfPress.ToString() + ")");
+        _pressedKeyboard.started += _ => HasStartedToPress();
+        _pressedKeyboard.performed += _ => FinishedToPress();
+        _pressedKeyboard.canceled += _ => CancelledPress();
+        _pressedKeyboard.Enable();
     }
 
-    private void FixedUpdate()
+    private void OnDestroy()
     {
-
+        _pressedKeyboard.Disable();
     }
-    // Update is called once per frame
-    void Update()
+
+    private void HasStartedToPress()
     {
-        
+        Debug.Log("BEGIN TO PRESS CORRECT KEY");
+    }
+
+    private void FinishedToPress()
+    {
+        Debug.Log("FINISHED TO PRESS CORRECT KEY");
+    }
+
+    private void CancelledPress()
+    {
+        Debug.Log("CANCEL TO PRESS KEY");
     }
 }
