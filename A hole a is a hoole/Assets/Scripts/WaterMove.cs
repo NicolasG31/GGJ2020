@@ -56,4 +56,9 @@ public class WaterMove : MonoBehaviour
         if (waterSpeed < waterSpeedMin)
             waterSpeed = waterSpeedMin;
     }
+
+    public void reduceWaterVolume(float value)
+    {
+
+    }
 }
