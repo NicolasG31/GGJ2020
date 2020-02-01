@@ -57,8 +57,38 @@ public class WaterMove : MonoBehaviour
             waterSpeed = waterSpeedMin;
     }
 
-    public void reduceWaterVolume(float value)
+    public void StartingReduceWater()
     {
-
+        StartCoroutine("ReduceWater");
     }
+
+    public void StartingIncreaseWater()
+    {
+        StartCoroutine("IncreaseWater");
+    }
+
+    private void reduceWaterVolume(float value)
+    {
+        Vector3 tmp = new Vector3(0, waterWall.transform.position.y - value, 0);
+        waterWall.transform.position = tmp;
+    }
+
+    IEnumerator ReduceWater()
+    {
+        for (float ft = 1f; ft >= 0; ft -= 0.1f)
+        {
+            reduceWaterVolume(0.075f);
+            yield return new WaitForSeconds(.1f);
+        }
+    }
+
+    IEnumerator IncreaseWater()
+    {
+        for (float ft = 1f; ft >= 0; ft -= 0.1f)
+        {
+            reduceWaterVolume(-0.025f);
+            yield return new WaitForSeconds(.1f);
+        }
+    }
+
 }
