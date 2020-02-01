@@ -7,25 +7,28 @@
       <e p="A hole a is a hoole.sln" t="IncludeFlat" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="AlternateKeysChallenge.cs" t="Include" />
         <e p="Assets" t="Include">
           <e p="Shaders" t="Include">
             <e p="toto.cs" t="Include" />
           </e>
         </e>
-        <e p="ChallengeManager.cs" t="Include" />
-        <e p="MainCanvasScript.cs" t="Include" />
+        <e p="MiniGameScript.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="AssignKey.cs" t="Include" />
+          <e p="ChallengeManager.cs" t="Include" />
           <e p="GameOver.cs" t="Include" />
           <e p="Hole.cs" t="Include" />
           <e p="HoleApparition.cs" t="Include" />
           <e p="HoleVisual.cs" t="Include" />
+          <e p="MainCanvasScript.cs" t="Include" />
           <e p="RepairTime.cs" t="Include" />
           <e p="ScoringManager.cs" t="Include" />
+          <e p="SerieOfKeysChallenge.cs" t="Include" />
+          <e p="SpamKeyChallenge.cs" t="Include" />
+          <e p="VolumeManager.cs" t="Include" />
           <e p="WaterMove.cs" t="Include" />
         </e>
-        <e p="SerieOfKeysChallenge.cs" t="Include" />
-        <e p="SpamKeyChallenge.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
             <e p="Fonts" t="Include">
