@@ -11,11 +11,13 @@ public class Hole : MonoBehaviour
     private bool _isPressingKey = false;
     private float _totalHoldDuration = 0.0f;
     private float _timeOfPress = 0.0f;
+    private HoleApparition _holeApparition;
 
     void Start()
     {
         _assignedKey = AssignKey.Instance.GetRandomKey();
         _totalHoldDuration = RepairTime.Instance.GetRepairTime();
+        _holeApparition = FindObjectOfType<HoleApparition>();
 
         _pressedKeyboard = new InputAction("press", binding: "<Keyboard>/#(" + _assignedKey + ")",
             interactions: "hold(duration=" + _totalHoldDuration.ToString() + ")");
@@ -57,6 +59,7 @@ public class Hole : MonoBehaviour
 
     private IEnumerator FinishedToPress()
     {
+        _holeApparition.DestroyAHole(gameObject);
         _isPressingKey = false;
         Debug.Log("FINISHED TO PRESS CORRECT KEY");
         _holeVisual.StopHole();

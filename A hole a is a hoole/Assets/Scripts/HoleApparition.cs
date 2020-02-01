@@ -65,10 +65,6 @@ public class HoleApparition : MonoBehaviour
             GetComponent<WaterMove>().waterMoving = true;
             GetComponent<WaterMove>().IncreaseWaterSpeed();
         }
-        else if (Holes.Count == 0)
-        {
-            GetComponent<WaterMove>().waterMoving = false;
-        }
     }
 
     public void DestroyAHole(GameObject Hole)
@@ -76,10 +72,11 @@ public class HoleApparition : MonoBehaviour
         if (Holes.Count > 0)
         {
             Holes.Remove(Hole);
-            Destroy(Hole);
             GetComponent<WaterMove>().ReduceWaterSpeed();
             GetComponent<ScoringManager>().IncreaseScore(100);
             Debug.Log("Remove a hole !");
         }
+        if (Holes.Count == 0)
+            GetComponent<WaterMove>().waterMoving = false;
     }
 }
