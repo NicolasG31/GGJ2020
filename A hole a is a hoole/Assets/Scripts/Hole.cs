@@ -7,18 +7,25 @@ public class Hole : MonoBehaviour
 {
     private string _assignedKey = "";
     private InputAction _pressedKeyboard;
+    private HoleVisual _holeVisual;
+    private bool _isPressingKey = false;
+    private float _totalHoldDuration = 0.0f;
+    private float _timeOfPress = 0.0f;
 
     void Start()
     {
         _assignedKey = AssignKey.Instance.GetRandomKey();
+        _totalHoldDuration = RepairTime.Instance.GetRepairTime();
 
         Debug.Log("KEY TO PRESS: " + _assignedKey);
         _pressedKeyboard = new InputAction("press", binding: "<Keyboard>/#(" + _assignedKey + ")",
-            interactions: "hold(duration=" + RepairTime.Instance.GetRepairTime().ToString() + ")");
+            interactions: "hold(duration=" + _totalHoldDuration.ToString() + ")");
         _pressedKeyboard.started += _ => HasStartedToPress();
-        _pressedKeyboard.performed += _ => FinishedToPress();
         _pressedKeyboard.canceled += _ => CancelledPress();
         _pressedKeyboard.Enable();
+
+        _holeVisual = GetComponent<HoleVisual>();
+        _holeVisual.StartHole(_assignedKey);
     }
 
     private void OnDestroy()
@@ -26,18 +33,43 @@ public class Hole : MonoBehaviour
         _pressedKeyboard.Disable();
     }
 
+    private void Update()
+    {
+        if (_isPressingKey)
+        {
+            _timeOfPress += Time.deltaTime;
+            _holeVisual.CompletionPercentage(_timeOfPress / _totalHoldDuration);
+            if (_timeOfPress >= _totalHoldDuration)
+                StartCoroutine(FinishedToPress());
+        }
+        else if (_timeOfPress > 0)
+        {
+            _timeOfPress -= Time.deltaTime;
+            _holeVisual.CompletionPercentage(_timeOfPress / _totalHoldDuration);
+        }
+    }
+
     private void HasStartedToPress()
     {
         Debug.Log("BEGIN TO PRESS CORRECT KEY");
+        _isPressingKey = true;
+        _holeVisual.StopSpill();
     }
 
-    private void FinishedToPress()
+    private IEnumerator FinishedToPress()
     {
+        _isPressingKey = false;
         Debug.Log("FINISHED TO PRESS CORRECT KEY");
+        _holeVisual.StopHole();
+        _pressedKeyboard.Disable();
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 
     private void CancelledPress()
     {
+        _isPressingKey = false;
+        _holeVisual.Spill();
         Debug.Log("CANCEL TO PRESS KEY");
     }
 }

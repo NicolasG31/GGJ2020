@@ -75,9 +75,8 @@ public class HoleVisual : MonoBehaviour
         spillEffect.enableEmission = false;
         stopSpillEffect.enableEmission = false;
         gauge.gameObject.SetActive(false);
-        foreach (GameObject obj in damages)
-            obj.SetActive(false);
         keypadUi.SetActive(false);
-        Instantiate(duckTape, damages[0].transform.position, Quaternion.Euler(0, 0, Random.RandomRange(0, 180)));
+        GameObject objTape = Instantiate(duckTape, damages[0].transform.position, Quaternion.Euler(0, 0, Random.RandomRange(0, 180)));
+        Destroy(objTape, 5f);
     }
 }

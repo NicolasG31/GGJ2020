@@ -22,9 +22,13 @@ public class AssignKey : MonoBehaviour
         }
     }
 
-    void Start()
+    private void OnEnable()
     {
         _alreadyAssignedKey.Add("");
+    }
+
+    void Start()
+    {
     }
 
     public string GetRandomKey()
