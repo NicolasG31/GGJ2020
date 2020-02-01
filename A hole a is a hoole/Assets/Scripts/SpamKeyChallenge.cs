@@ -61,8 +61,11 @@ public class SpamKeyChallenge : MonoBehaviour
         }
     }
 
-    public void LaunchChallenge()
+    public IEnumerator LaunchChallenge()
     {
+        MiniGameScript.Instance.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+
         int unicode = Random.Range(97, 123);
         char character = (char)unicode;
         string key = character.ToString();
@@ -72,10 +75,12 @@ public class SpamKeyChallenge : MonoBehaviour
         MiniGameScript.Instance.SetInfoText("Press the " + key + " key " + _nbrToSpam + " times !");
         MiniGameScript.Instance.SetProgress(0);
         MiniGameScript.Instance.SetGameKeys(key);
+        MiniGameScript.Instance.SetCounterText(_nbrToSpam.ToString());
     }
 
     private void HasPressedCorrectKey()
     {
+        MiniGameScript.Instance.SetCounterText((_nbrToSpam - _countOfSpam).ToString());
         _countOfSpam++;
         if (_countOfSpam >= _nbrToSpam)
             ChallengeSucceed();
@@ -99,5 +104,6 @@ public class SpamKeyChallenge : MonoBehaviour
         _challengeIsPlaying = false;
         _limitTimer = 0.0f;
         MiniGameScript.Instance.ResetChallengeInfos();
+        MiniGameScript.Instance.gameObject.SetActive(false);
     }
 }

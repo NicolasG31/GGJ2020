@@ -42,9 +42,7 @@ public class MiniGameScript : MonoBehaviour
     {
         _infoText = infoBox.GetComponentInChildren<TextMeshProUGUI>();
         _counterText = counterBox.GetComponentInChildren<TextMeshProUGUI>();
-        SetGameKeys("123456789");
-        SetCounterText("12");
-        SetInfoText("this is an infotext");
+        gameObject.SetActive(false);
     }
 
     void Update()
@@ -56,6 +54,7 @@ public class MiniGameScript : MonoBehaviour
     {
         SetInfoText("");
         SetProgress(0);
+        SetCounterText("");
         key1.GetComponentInChildren<TextMeshProUGUI>().text = "";
         key2.GetComponentInChildren<TextMeshProUGUI>().text = "";
         key3.GetComponentInChildren<TextMeshProUGUI>().text = "";

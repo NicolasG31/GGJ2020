@@ -63,8 +63,11 @@ public class AlternateKeysChallenge : MonoBehaviour
         }
     }
 
-    public void LaunchChallenge()
+    public IEnumerator LaunchChallenge()
     {
+        MiniGameScript.Instance.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+
         int unicode = Random.Range(97, 123);
         char character = (char)unicode;
         string key = character.ToString();
@@ -82,6 +85,11 @@ public class AlternateKeysChallenge : MonoBehaviour
         Debug.Log("Challenge Keys to Alternate: " + _keysToAlternate[0] + " / " + _keysToAlternate[1]);
         _inputAction.ApplyBindingOverride("<Keyboard>/#(" + _keysToAlternate[0] + ")");
         _challengeIsPlaying = true;
+
+        MiniGameScript.Instance.SetInfoText("Alternate between both keys " + _goalOfRepetition + " times !");
+        MiniGameScript.Instance.SetProgress(0);
+        MiniGameScript.Instance.SetGameKeys(_keysToAlternate[0] + _keysToAlternate[1]);
+        MiniGameScript.Instance.SetCounterText(_goalOfRepetition.ToString());
     }
 
     private void HasPressedCorrectKey()
@@ -90,6 +98,7 @@ public class AlternateKeysChallenge : MonoBehaviour
             _actualIndex = 1;
         else
         {
+            MiniGameScript.Instance.SetCounterText((_goalOfRepetition - _currentNbrOfRepetition).ToString());
             _currentNbrOfRepetition++;
             _actualIndex = 0;
         }
@@ -119,5 +128,6 @@ public class AlternateKeysChallenge : MonoBehaviour
         _limitTimer = 0.0f;
         _actualIndex = 0;
         _currentNbrOfRepetition = 0;
+        MiniGameScript.Instance.ResetChallengeInfos();
     }
 }

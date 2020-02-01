@@ -69,8 +69,11 @@ public class SerieOfKeysChallenge : MonoBehaviour
         return new string(charArray);
     }
 
-    public void LaunchChallenge()
+    public IEnumerator LaunchChallenge()
     {
+        MiniGameScript.Instance.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+
         string serieOfKeysStr = "";
         for (int i = 0; i < _numberOfKeys; i++)
         {
@@ -90,6 +93,10 @@ public class SerieOfKeysChallenge : MonoBehaviour
         _inputAction.ApplyBindingOverride("<Keyboard>/#(" + _currentSerieOfKeys.Peek() + ")");
         Debug.Log("Must press " + _currentSerieOfKeys.Peek());
         _challengeIsPlaying = true;
+
+        MiniGameScript.Instance.SetInfoText("Press the serie of key above !");
+        MiniGameScript.Instance.SetProgress(0);
+        MiniGameScript.Instance.SetGameKeys(serieOfKeysStr);
     }
 
     private void HasPressedCorrectKey()
@@ -123,5 +130,6 @@ public class SerieOfKeysChallenge : MonoBehaviour
     {
         _challengeIsPlaying = false;
         _limitTimer = 0.0f;
+        MiniGameScript.Instance.ResetChallengeInfos();
     }
 }
