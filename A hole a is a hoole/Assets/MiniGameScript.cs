@@ -11,7 +11,7 @@ public class MiniGameScript : MonoBehaviour
 
     public static MiniGameScript Instance { get { return _instance; } }
 
-    public GameObject progressBar, infoBox;
+    public GameObject progressBar, infoBox, counterBox;
 
     public GameObject key1,
         key2,
@@ -24,7 +24,7 @@ public class MiniGameScript : MonoBehaviour
         key9,
         key10;
 
-    private TextMeshProUGUI _infoText;
+    private TextMeshProUGUI _infoText, _counterText;
 
     private void Awake()
     {
@@ -41,7 +41,9 @@ public class MiniGameScript : MonoBehaviour
     void Start()
     {
         _infoText = infoBox.GetComponentInChildren<TextMeshProUGUI>();
+        _counterText = counterBox.GetComponentInChildren<TextMeshProUGUI>();
         SetGameKeys("123456789");
+        SetCounterText("12");
         SetInfoText("this is an infotext");
     }
 
@@ -69,6 +71,11 @@ public class MiniGameScript : MonoBehaviour
     public void SetInfoText(String newInfoText)
     {
         _infoText.text = newInfoText;
+    }
+
+    public void SetCounterText(String newCounterText)
+    {
+        _counterText.text = newCounterText;
     }
 
     public void SetProgress(int percentage)

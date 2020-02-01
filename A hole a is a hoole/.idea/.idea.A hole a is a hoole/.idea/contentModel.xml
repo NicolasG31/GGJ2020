@@ -18,6 +18,7 @@
           <e p="AssignKey.cs" t="Include" />
           <e p="ChallengeManager.cs" t="Include" />
           <e p="GameOver.cs" t="Include" />
+          <e p="GameOverPanel.cs" t="Include" />
           <e p="Hole.cs" t="Include" />
           <e p="HoleApparition.cs" t="Include" />
           <e p="HoleVisual.cs" t="Include" />
