@@ -7,7 +7,7 @@ public class HoleApparition : MonoBehaviour
     public GameObject PrefabHole;
     private Transform rt;
     List<GameObject> Holes = new List<GameObject>();
-    private float apparitionTime = 2f;
+    public float apparitionTime = 8f;
     private float _timerApparition = 0.0f;
     private static float apparitionReduceValue = 0.3f;
     private float _reduceValueApparition = 60f;

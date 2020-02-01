@@ -17,7 +17,6 @@ public class Hole : MonoBehaviour
         _assignedKey = AssignKey.Instance.GetRandomKey();
         _totalHoldDuration = RepairTime.Instance.GetRepairTime();
 
-        Debug.Log("KEY TO PRESS: " + _assignedKey);
         _pressedKeyboard = new InputAction("press", binding: "<Keyboard>/#(" + _assignedKey + ")",
             interactions: "hold(duration=" + _totalHoldDuration.ToString() + ")");
         _pressedKeyboard.started += _ => HasStartedToPress();
