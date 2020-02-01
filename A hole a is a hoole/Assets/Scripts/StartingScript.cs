@@ -13,7 +13,7 @@ public class StartingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Time.timeScale = 0;
     }
 
     private void Update()
@@ -23,6 +23,7 @@ public class StartingScript : MonoBehaviour
         if (_timerCountdown <= countDown)
         {
             StartingPanel.SetActive(false);
+            Time.timeScale = 1;
             return;
         }
         int _text = (int)_timerCountdown;
