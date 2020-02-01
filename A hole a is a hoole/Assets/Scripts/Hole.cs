@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class Hole : MonoBehaviour
 {
     private string _assignedKey = "";
-    private float _timeOfPress = 1f;
     private InputAction _pressedKeyboard;
 
     void Start()
@@ -15,7 +14,7 @@ public class Hole : MonoBehaviour
 
         Debug.Log("KEY TO PRESS: " + _assignedKey);
         _pressedKeyboard = new InputAction("press", binding: "<Keyboard>/" + _assignedKey,
-            interactions: "hold(duration=" + _timeOfPress.ToString() + ")");
+            interactions: "hold(duration=" + RepairTime.Instance.GetRepairTime().ToString() + ")");
         _pressedKeyboard.started += _ => HasStartedToPress();
         _pressedKeyboard.performed += _ => FinishedToPress();
         _pressedKeyboard.canceled += _ => CancelledPress();
