@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SerieOfKeysChallenge : MonoBehaviour
+public class SpamKeyChallenge : MonoBehaviour
 {
-    private static SerieOfKeysChallenge _instance;
+    private static SpamKeyChallenge _instance;
 
-    public static SerieOfKeysChallenge Instance { get { return _instance; } }
+    public static SpamKeyChallenge Instance { get { return _instance; } }
 
-    private int _numberOfKeys = 3;
+    private InputAction _inputAction;
+    private int _nbrToSpam = 6;
     private float _timer = 0.0f;
     private static float _timeBetweenChanges = 60f;
-    private Stack<string> _currentSerieOfKeys = new Stack<string>();
-    private InputAction _inputAction;
+    private int _countOfSpam = 0;
     private float _limitTimer = 0.0f;
     private static float _timeOfLimit = 6f;
     private bool _challengeIsPlaying = false;
@@ -23,6 +23,8 @@ public class SerieOfKeysChallenge : MonoBehaviour
         _inputAction = new InputAction("SerieOfKeysChallenge", binding: "<Keyboard>/#()");
         _inputAction.performed += _ => HasPressedCorrectKey();
         _inputAction.Enable();
+
+        LaunchChallenge();
     }
 
     private void Awake()
@@ -45,10 +47,9 @@ public class SerieOfKeysChallenge : MonoBehaviour
     private void Update()
     {
         _timer += Time.deltaTime;
-
         if (_timer >= _timeBetweenChanges)
         {
-            _numberOfKeys++;
+            _nbrToSpam += 2;
             _timer = 0.0f;
         }
 
@@ -62,49 +63,22 @@ public class SerieOfKeysChallenge : MonoBehaviour
         }
     }
 
-    private string Reverse(string s)
-    {
-        char[] charArray = s.ToCharArray();
-        System.Array.Reverse(charArray);
-        return new string(charArray);
-    }
-
     private void LaunchChallenge()
     {
-        string serieOfKeysStr = "";
-        for (int i = 0; i < _numberOfKeys; i++)
-        {
-            int unicode = Random.Range(97, 123);
-            char character = (char)unicode;
-            string key = character.ToString();
-            if (i == 0 || key != _currentSerieOfKeys.Peek())
-            {
-                _currentSerieOfKeys.Push(key);
-                serieOfKeysStr += key;
-            }
-            else
-                i--;
-        }
-        serieOfKeysStr = Reverse(serieOfKeysStr);
-        Debug.Log("Challenge Serie of Keys: " + serieOfKeysStr);
-        _inputAction.ApplyBindingOverride("<Keyboard>/#(" + _currentSerieOfKeys.Peek() + ")");
-        Debug.Log("Must press " + _currentSerieOfKeys.Peek());
+        int unicode = Random.Range(97, 123);
+        char character = (char)unicode;
+        string key = character.ToString();
+
+        Debug.Log("Spam Key Challenge, key: " + key);
+        _inputAction.ApplyBindingOverride("<Keyboard>/#(" + key + ")");
         _challengeIsPlaying = true;
     }
 
     private void HasPressedCorrectKey()
     {
-        string currentKey = _currentSerieOfKeys.Peek();
-        _currentSerieOfKeys.Pop();
-        Debug.Log("Correctly pressed " + currentKey);
-        if (_currentSerieOfKeys.Count == 0)
+        _countOfSpam++;
+        if (_countOfSpam >= _nbrToSpam)
             ChallengeSucceed();
-        else
-        {
-            currentKey = _currentSerieOfKeys.Peek();
-            Debug.Log("Must press " + currentKey);
-            _inputAction.ApplyBindingOverride("<Keyboard>/#(" + currentKey + ")");
-        }
     }
 
     private void ChallengeSucceed()
@@ -122,6 +96,7 @@ public class SerieOfKeysChallenge : MonoBehaviour
 
     private void ResetChallenge()
     {
+        _countOfSpam = 0;
         _challengeIsPlaying = false;
         _limitTimer = 0.0f;
     }
