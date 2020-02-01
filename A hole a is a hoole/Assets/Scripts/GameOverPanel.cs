@@ -16,7 +16,7 @@ public class GameOverPanel : MonoBehaviour
         TextScoreNumber.SetText(_score.ToString());
     }
 
-    void ReturnMenu()
+    public void ReturnMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
