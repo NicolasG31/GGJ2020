@@ -9,7 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8718060014703833951}
-  - component: {fileID: 8718060014703833950}
+  - component: {fileID: 4217329978302417798}
+  - component: {fileID: 4217329978302417792}
+  - component: {fileID: 4217329978302417799}
+  - component: {fileID: 4217329978302417796}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -31,7 +34,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8718060014703833950
+--- !u!114 &4217329978302417798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,8 +43,57 @@ MonoBehaviour:
   m_GameObject: {fileID: 8718060014703833949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6325b40c85e78142a5ca4b125ad462a, type: 3}
+  m_Script: {fileID: 11500000, guid: 060f6dcf5f8965e4bbd221c4cd2baf7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waterWall: {fileID: 0}
-  waterVolume: -15.2
+  GameManager: {fileID: 8718060014703833949}
+  waterMoving: 0
+  waterSpeed: 0.005
+--- !u!114 &4217329978302417792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718060014703833949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35c6ce4e6dae38f41a2e58657d25a160, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabHole: {fileID: 624983577212904858, guid: aa870ecbdf05cb2408a21a1c4b358aa8,
+    type: 3}
+  GameManager: {fileID: 8718060014703833949}
+  apparitionTimeStart: 8
+  apparitionTimeEnd: 2
+  apparitionTimeReduceValue: 0.3
+  apparitionTime: 8
+--- !u!114 &4217329978302417799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718060014703833949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1426d4acb47fc554ea36732a661e0a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: 0
+  valueScoreTime: 1
+--- !u!114 &4217329978302417796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718060014703833949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a00f779e42b510419da55879ce5e627, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameOverPanel: {fileID: 0}
+  EndGame: 0

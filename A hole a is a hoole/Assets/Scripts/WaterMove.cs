@@ -5,33 +5,56 @@ using UnityEngine;
 public class WaterMove : MonoBehaviour
 {
     public GameObject waterWall;
-    public float waterVolume = -13;
+    public GameObject GameManager;
+    public bool waterMoving = false;
+    public float waterSpeed = 0.0005f;
+    private float waterSpeedMin = 0.0005f;
+    private float waterSpeedMax = 0.002f;
+    private float screenSizeMax = -2.40f;
+    private float screenSizeMin = -12.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Vector3 tmp = new Vector3(0, waterVolume, 0);
-        // waterWall.transform.position = tmp;
-        ChangeWater();
+        waterSpeed = 0.0005f;
+        Vector3 tmp = new Vector3(0, -12.5f, 0);
+        waterWall.transform.position = tmp;
+        screenSizeMin = waterWall.transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        ChangeWater();
+        if (waterMoving)
+            ChangeWater();
     }
 
     void ChangeWater()
     {
-        if (waterVolume >= 2)
+        float y = waterWall.transform.position.y + waterSpeed;
+        if (y > screenSizeMax)
         {
-            waterVolume = 2;
+            y = screenSizeMax;
+            GameManager.GetComponent<GameOver>().GameStop();
         }
-        else if (waterVolume <= -12.5)
-        {
-            waterVolume = -12.5f;
-        }
-        Vector3 tmp = new Vector3(0, waterVolume, 0);
+        else if (y < screenSizeMin)
+            y = screenSizeMin;
+        
+        Vector3 tmp = new Vector3(0, y, 0);
         waterWall.transform.position = tmp;
+    }
+
+    public void IncreaseWaterSpeed()
+    {
+        waterSpeed += 0.0001f;
+        if (waterSpeed > waterSpeedMax)
+            waterSpeed = waterSpeedMax;
+    }
+
+    public void ReduceWaterSpeed()
+    {
+        waterSpeed -= 0.0001f;
+        if (waterSpeed < waterSpeedMin)
+            waterSpeed = waterSpeedMin;
     }
 }
