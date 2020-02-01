@@ -24,7 +24,7 @@ public class HoleVisual : MonoBehaviour
     void Start()
     {
         // A enlever
-        //StartHole("A");
+        StartHole("A");
     }
 
     public void StartHole(string keypad)
