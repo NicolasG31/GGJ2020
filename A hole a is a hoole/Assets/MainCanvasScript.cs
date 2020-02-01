@@ -14,7 +14,7 @@ public class MainCanvasScript : MonoBehaviour
         optionButton.onClick.AddListener(OnOptionButton);
         exitButton.onClick.AddListener(OnExitButton);
     }
-    
+
     void OnStartButton()
     {
         audioData.Play();
