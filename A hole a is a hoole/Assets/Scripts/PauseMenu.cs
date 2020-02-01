@@ -21,7 +21,7 @@ public class PauseMenu : MonoBehaviour
     {
         var keyboard = Keyboard.current;
 
-        if (keyboard.escapeKey.isPressed)
+        if (keyboard.escapeKey.wasPressedThisFrame)
             PauseGame();
 
         if (pause)
