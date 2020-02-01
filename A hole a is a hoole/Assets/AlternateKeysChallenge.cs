@@ -63,7 +63,7 @@ public class AlternateKeysChallenge : MonoBehaviour
         }
     }
 
-    private void LaunchChallenge()
+    public void LaunchChallenge()
     {
         int unicode = Random.Range(97, 123);
         char character = (char)unicode;

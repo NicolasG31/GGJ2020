@@ -69,7 +69,7 @@ public class SerieOfKeysChallenge : MonoBehaviour
         return new string(charArray);
     }
 
-    private void LaunchChallenge()
+    public void LaunchChallenge()
     {
         string serieOfKeysStr = "";
         for (int i = 0; i < _numberOfKeys; i++)
@@ -111,7 +111,6 @@ public class SerieOfKeysChallenge : MonoBehaviour
     {
         ResetChallenge();
         Debug.Log("CHALLENGE SUCCEED");
-        LaunchChallenge();
     }
 
     private void ChallengeFailed()

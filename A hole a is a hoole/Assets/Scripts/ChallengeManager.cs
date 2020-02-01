@@ -51,12 +51,15 @@ public class ChallengeManager : MonoBehaviour
         {
             case 0:
                 Debug.Log("Challenge 0");
+                SerieOfKeysChallenge.Instance.LaunchChallenge();
                 break;
             case 1:
                 Debug.Log("Challenge 1");
+                SpamKeyChallenge.Instance.LaunchChallenge();
                 break;
             case 2:
                 Debug.Log("Challenge 2");
+                AlternateKeysChallenge.Instance.LaunchChallenge();
                 break;
         }
     }

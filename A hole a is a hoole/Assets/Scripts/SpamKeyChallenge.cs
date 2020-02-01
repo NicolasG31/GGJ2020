@@ -61,7 +61,7 @@ public class SpamKeyChallenge : MonoBehaviour
         }
     }
 
-    private void LaunchChallenge()
+    public void LaunchChallenge()
     {
         int unicode = Random.Range(97, 123);
         char character = (char)unicode;
@@ -69,6 +69,9 @@ public class SpamKeyChallenge : MonoBehaviour
 
         _inputAction.ApplyBindingOverride("<Keyboard>/#(" + key + ")");
         _challengeIsPlaying = true;
+        MiniGameScript.Instance.SetInfoText("Press the " + key + " key " + _nbrToSpam + " times !");
+        MiniGameScript.Instance.SetProgress(0);
+        MiniGameScript.Instance.SetGameKeys(key);
     }
 
     private void HasPressedCorrectKey()
@@ -82,7 +85,6 @@ public class SpamKeyChallenge : MonoBehaviour
     {
         ResetChallenge();
         Debug.Log("CHALLENGE SUCCEED");
-        LaunchChallenge();
     }
 
     private void ChallengeFailed()
@@ -96,5 +98,6 @@ public class SpamKeyChallenge : MonoBehaviour
         _countOfSpam = 0;
         _challengeIsPlaying = false;
         _limitTimer = 0.0f;
+        MiniGameScript.Instance.ResetChallengeInfos();
     }
 }

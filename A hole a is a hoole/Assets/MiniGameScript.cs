@@ -7,6 +7,10 @@ using UnityEngine.UI;
 
 public class MiniGameScript : MonoBehaviour
 {
+    private static MiniGameScript _instance;
+
+    public static MiniGameScript Instance { get { return _instance; } }
+
     public GameObject progressBar, infoBox;
 
     public GameObject key1,
@@ -22,6 +26,18 @@ public class MiniGameScript : MonoBehaviour
 
     private TextMeshProUGUI _infoText;
 
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     void Start()
     {
         _infoText = infoBox.GetComponentInChildren<TextMeshProUGUI>();
@@ -32,6 +48,22 @@ public class MiniGameScript : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void ResetChallengeInfos()
+    {
+        SetInfoText("");
+        SetProgress(0);
+        key1.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        key2.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        key3.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        key4.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        key5.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        key6.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        key7.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        key8.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        key9.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        key10.GetComponentInChildren<TextMeshProUGUI>().text = "";
     }
 
     public void SetInfoText(String newInfoText)
