@@ -5003,6 +5003,8 @@ MonoBehaviour:
   spillEffect: {fileID: 3964001127744367703}
   stopSpillEffect: {fileID: 3964001129396141055}
   gauge: {fileID: 3964001129328216307}
+  duckTape: {fileID: 2989111909499975647, guid: 9fbc534d355905b43a931cd19f1f1c07,
+    type: 3}
 --- !u!1 &3964001128951603669
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class HoleVisual : MonoBehaviour
     public ParticleSystem spillEffect;
     public ParticleSystem stopSpillEffect;
     public Image gauge;
+    public GameObject duckTape;
 
     private InputAction _inputAction;
 
@@ -24,7 +25,8 @@ public class HoleVisual : MonoBehaviour
     void Start()
     {
         // A enlever
-        StartHole("A");
+//        StartHole("A");
+//        StopHole();
     }
 
     public void StartHole(string keypad)
@@ -70,7 +72,12 @@ public class HoleVisual : MonoBehaviour
     }
     public void StopHole()
     {
-        // faire apparaitre un truc de réparation à cet endroit
-        Destroy(this.gameObject);
+        spillEffect.enableEmission = false;
+        stopSpillEffect.enableEmission = false;
+        gauge.gameObject.SetActive(false);
+        foreach (GameObject obj in damages)
+            obj.SetActive(false);
+        keypadUi.SetActive(false);
+        Instantiate(duckTape, damages[0].transform.position, Quaternion.Euler(0, 0, Random.RandomRange(0, 180)));
     }
 }
