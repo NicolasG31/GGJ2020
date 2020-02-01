@@ -3554,9 +3554,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3624,7 +3624,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3677,7 +3677,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3729,7 +3729,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minKillSpeed: 0
     maxKillSpeed: 10000
-    radiusScale: 1
+    radiusScale: 0.0001
     collidesWith:
       serializedVersion: 2
       m_Bits: 4294967295
@@ -4942,9 +4942,10 @@ Animation:
   m_GameObject: {fileID: 3964001128454691587}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: b5aef28c9d33d88458d7762bef993ac7, type: 2}
   m_Animations:
   - {fileID: 0}
+  - {fileID: 7400000, guid: b5aef28c9d33d88458d7762bef993ac7, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -4959,6 +4960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3964001128580414993}
   - component: {fileID: 3964001128580414992}
+  - component: {fileID: 6825020654015770369}
   m_Layer: 0
   m_Name: HoleVisual
   m_TagString: Untagged
@@ -5005,6 +5007,18 @@ MonoBehaviour:
   gauge: {fileID: 3964001129328216307}
   duckTape: {fileID: 2989111909499975647, guid: 6d4ba1e8abf3ccf48ad75a01d968576f,
     type: 3}
+--- !u!114 &6825020654015770369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3964001128580414994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126b5024e024c964dbc9efae2d8ed965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3964001128951603669
 GameObject:
   m_ObjectHideFlags: 0
