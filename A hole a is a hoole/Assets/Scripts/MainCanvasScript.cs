@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainCanvasScript : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class MainCanvasScript : MonoBehaviour
     void OnStartButton()
     {
         audioData.Play();
+        SceneManager.LoadScene("MainScene");
     }
 
     void OnOptionButton()
@@ -28,5 +30,6 @@ public class MainCanvasScript : MonoBehaviour
     void OnExitButton()
     {
         audioData.Play();
+        Application.Quit();
     }
 }
