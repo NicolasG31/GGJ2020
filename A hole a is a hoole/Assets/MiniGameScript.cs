@@ -42,6 +42,7 @@ public class MiniGameScript : MonoBehaviour
     {
         _infoText = infoBox.GetComponentInChildren<TextMeshProUGUI>();
         _counterText = counterBox.GetComponentInChildren<TextMeshProUGUI>();
+        ResetChallengeInfos();
         gameObject.SetActive(false);
     }
 
