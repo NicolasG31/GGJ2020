@@ -89,12 +89,14 @@ public class SpamKeyChallenge : MonoBehaviour
     private void ChallengeSucceed()
     {
         ResetChallenge();
+        StartCoroutine(WaterMove.Instance.ReduceWater(0.075f));
         Debug.Log("CHALLENGE SUCCEED");
     }
 
     private void ChallengeFailed()
     {
         ResetChallenge();
+        StartCoroutine(WaterMove.Instance.IncreaseWater(-0.025f));
         Debug.Log("CHALLENGE FAILED");
     }
 

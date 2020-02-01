@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class WaterMove : MonoBehaviour
 {
+    private static WaterMove _instance;
+
+    public static WaterMove Instance { get { return _instance; } }
+
     public GameObject waterWall;
     public bool waterMoving = false;
     public float waterSpeed = 0.0005f;
@@ -11,6 +15,18 @@ public class WaterMove : MonoBehaviour
     private float waterSpeedMax = 0.002f;
     private float screenSizeMax = -2.40f;
     private float screenSizeMin = -12.5f;
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -73,20 +89,20 @@ public class WaterMove : MonoBehaviour
         waterWall.transform.position = tmp;
     }
 
-    IEnumerator ReduceWater()
+    public IEnumerator ReduceWater(float vol)
     {
         for (float ft = 1f; ft >= 0; ft -= 0.1f)
         {
-            reduceWaterVolume(0.075f);
+            reduceWaterVolume(vol);
             yield return new WaitForSeconds(.1f);
         }
     }
 
-    IEnumerator IncreaseWater()
+    public IEnumerator IncreaseWater(float vol)
     {
         for (float ft = 1f; ft >= 0; ft -= 0.1f)
         {
-            reduceWaterVolume(-0.025f);
+            reduceWaterVolume(vol);
             yield return new WaitForSeconds(.1f);
         }
     }
