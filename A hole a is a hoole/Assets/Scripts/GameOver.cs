@@ -20,7 +20,7 @@ public class GameOver : MonoBehaviour
         {
             Debug.Log("GAME OVER");
             Time.timeScale = 0;
-            GameOverPanel.SetActive(true);
+            //GameOverPanel.SetActive(true);
         }
     }
 

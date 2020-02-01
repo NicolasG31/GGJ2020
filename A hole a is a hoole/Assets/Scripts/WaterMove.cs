@@ -5,7 +5,6 @@ using UnityEngine;
 public class WaterMove : MonoBehaviour
 {
     public GameObject waterWall;
-    public GameObject GameManager;
     public bool waterMoving = false;
     public float waterSpeed = 0.0005f;
     private float waterSpeedMin = 0.0005f;
@@ -35,7 +34,7 @@ public class WaterMove : MonoBehaviour
         if (y > screenSizeMax)
         {
             y = screenSizeMax;
-            GameManager.GetComponent<GameOver>().GameStop();
+            GetComponent<GameOver>().GameStop();
         }
         else if (y < screenSizeMin)
             y = screenSizeMin;

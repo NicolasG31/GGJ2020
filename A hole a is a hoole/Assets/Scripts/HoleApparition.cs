@@ -6,7 +6,6 @@ public class HoleApparition : MonoBehaviour
 {
     public GameObject PrefabHole;
     private Transform rt;
-    public GameObject GameManager;
     List<GameObject> Holes = new List<GameObject>();
     public float apparitionTimeStart = 8.0f;
     public float apparitionTimeEnd = 2.0f;
@@ -65,12 +64,12 @@ public class HoleApparition : MonoBehaviour
             }
 
             Holes.Add(Instantiate(PrefabHole, new Vector3(x, y, 0), Quaternion.identity));
-            GameManager.GetComponent<WaterMove>().waterMoving = true;
-            GameManager.GetComponent<WaterMove>().IncreaseWaterSpeed();
+            GetComponent<WaterMove>().waterMoving = true;
+            GetComponent<WaterMove>().IncreaseWaterSpeed();
         }
         else if (Holes.Count == 0)
         {
-            GameManager.GetComponent<WaterMove>().waterMoving = false;
+            GetComponent<WaterMove>().waterMoving = false;
         }
     }
 
@@ -80,8 +79,8 @@ public class HoleApparition : MonoBehaviour
         {
             Holes.Remove(Hole);
             Destroy(Hole);
-            GameManager.GetComponent<WaterMove>().ReduceWaterSpeed();
-            GameManager.GetComponent<ScoringManager>().IncreaseScore(100);
+            GetComponent<WaterMove>().ReduceWaterSpeed();
+            GetComponent<ScoringManager>().IncreaseScore(100);
             Debug.Log("Remove a hole !");
         }
     }

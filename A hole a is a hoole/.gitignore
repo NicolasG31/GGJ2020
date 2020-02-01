@@ -10,7 +10,7 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 
-*.meta
+
 *.ida
 
 # Uncomment this line if you wish to ignore the asset store tools plugin

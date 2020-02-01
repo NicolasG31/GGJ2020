@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4217329978302417798}
   - component: {fileID: 4217329978302417792}
   - component: {fileID: 4217329978302417799}
-  - component: {fileID: 4217329978302417796}
+  - component: {fileID: 6026630340720260314}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060f6dcf5f8965e4bbd221c4cd2baf7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterWall: {fileID: 0}
-  GameManager: {fileID: 8718060014703833949}
+  waterWall: {fileID: 3764141257358765893, guid: 137a2cdb280481740a6c3d569e31be21,
+    type: 3}
   waterMoving: 0
   waterSpeed: 0.005
 --- !u!114 &4217329978302417792
@@ -59,16 +59,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8718060014703833949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35c6ce4e6dae38f41a2e58657d25a160, type: 3}
+  m_Script: {fileID: 11500000, guid: f24a42b1023042b4aac140d709c5ab35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabHole: {fileID: 624983577212904858, guid: aa870ecbdf05cb2408a21a1c4b358aa8,
-    type: 3}
-  GameManager: {fileID: 8718060014703833949}
-  apparitionTimeStart: 8
-  apparitionTimeEnd: 2
-  apparitionTimeReduceValue: 0.3
-  apparitionTime: 8
+  GameOverPanel: {fileID: 0}
+  EndGame: 0
 --- !u!114 &4217329978302417799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,12 +73,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8718060014703833949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1426d4acb47fc554ea36732a661e0a41, type: 3}
+  m_Script: {fileID: 11500000, guid: 2dd1e1e0663b6154092b33ba509f7811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Score: 0
   valueScoreTime: 1
---- !u!114 &4217329978302417796
+--- !u!114 &6026630340720260314
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,8 +87,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8718060014703833949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a00f779e42b510419da55879ce5e627, type: 3}
+  m_Script: {fileID: 11500000, guid: 547f44d9bbe6eb04a81fe61069235cbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOverPanel: {fileID: 0}
-  EndGame: 0
+  PrefabHole: {fileID: 3964001128580414994, guid: 7ad0bacfcf962a6499083a79830d28c3,
+    type: 3}
+  apparitionTimeStart: 8
+  apparitionTimeEnd: 2
+  apparitionTimeReduceValue: 0.3
+  apparitionTime: 8
