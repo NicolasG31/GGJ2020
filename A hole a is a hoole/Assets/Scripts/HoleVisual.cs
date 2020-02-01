@@ -49,6 +49,7 @@ public class HoleVisual : MonoBehaviour
         isSpilling = true;
         spillEffect.enableEmission = true;
         stopSpillEffect.enableEmission = false;
+        gauge.GetComponent<Image>().color = Color.white;
         // L'eau se verse
     }
 
@@ -57,6 +58,7 @@ public class HoleVisual : MonoBehaviour
         isSpilling = false;
         spillEffect.enableEmission = false;
         stopSpillEffect.enableEmission = true;
+        gauge.GetComponent<Image>().color = Color.green;
         // L'eau est retenue
     }
 
@@ -70,6 +72,7 @@ public class HoleVisual : MonoBehaviour
     {
         gauge.fillAmount = perc;
     }
+
     public void StopHole()
     {
         spillEffect.enableEmission = false;
