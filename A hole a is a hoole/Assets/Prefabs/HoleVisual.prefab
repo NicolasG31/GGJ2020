@@ -865,7 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 24.4
+      scalar: 100
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4709,8 +4709,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4942,10 +4942,9 @@ Animation:
   m_GameObject: {fileID: 3964001128454691587}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: b5aef28c9d33d88458d7762bef993ac7, type: 2}
+  m_Animation: {fileID: 0}
   m_Animations:
   - {fileID: 0}
-  - {fileID: 7400000, guid: b5aef28c9d33d88458d7762bef993ac7, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -4960,7 +4959,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3964001128580414993}
   - component: {fileID: 3964001128580414992}
-  - component: {fileID: 1559940084969761336}
   m_Layer: 0
   m_Name: HoleVisual
   m_TagString: Untagged
@@ -4977,7 +4975,7 @@ Transform:
   m_GameObject: {fileID: 3964001128580414994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.2586, y: 0.2586, z: 0.2586}
   m_Children:
   - {fileID: 3964001128237740160}
   - {fileID: 3964001128248819713}
@@ -4998,27 +4996,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyPadName: 
   isSpilling: 0
-  damages:
-  - {fileID: 3964001129244282302}
-  - {fileID: 3964001129203502819}
-  keypadUi: {fileID: 3964001128454691587}
-  spillEffect: {fileID: 3964001127744367703}
-  stopSpillEffect: {fileID: 3964001129396141055}
-  gauge: {fileID: 3964001129328216307}
-  duckTape: {fileID: 2989111909499975647, guid: 6d4ba1e8abf3ccf48ad75a01d968576f,
-    type: 3}
---- !u!114 &1559940084969761336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3964001128580414994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 126b5024e024c964dbc9efae2d8ed965, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  damages: []
+  keypadUi: {fileID: 0}
+  spillEffect: {fileID: 0}
+  stopSpillEffect: {fileID: 0}
+  gauge: {fileID: 0}
+  duckTape: {fileID: 0}
 --- !u!1 &3964001128951603669
 GameObject:
   m_ObjectHideFlags: 0
@@ -5305,7 +5288,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 779366e582e8e2d4eafdeb72913e339b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d4d208e77474df428a54f9542b50955, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5313,7 +5296,7 @@ SpriteRenderer:
   m_Size: {x: 8.6, y: 6.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3964001129244282302
@@ -5386,7 +5369,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: f25abe2c60dae6f48a1cb11d483c72e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e40e158e169acf840b719d482c7674f2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5394,7 +5377,7 @@ SpriteRenderer:
   m_Size: {x: 8, y: 8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3964001129327306464
@@ -5493,13 +5476,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6a7515c5302a0924fa89f41adedcc33b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dbbd0c34a8ce82d47936ad18934c1fba, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
-  m_FillClockwise: 1
+  m_FillClockwise: 0
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
@@ -10223,8 +10206,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
