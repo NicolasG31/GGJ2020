@@ -6,24 +6,23 @@ using TMPro;
 public class StartingScript : MonoBehaviour
 {
     public GameObject StartingPanel;
+    public GameObject GameManager;
     public TextMeshProUGUI TextNumber;
-    private float _timerCountdown = 6f;
-    private float countDown = 0f;
+    public float _timerCountdown = 6f;
 
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 0;
+
     }
 
     private void Update()
     {
         _timerCountdown -= Time.deltaTime;
-        Debug.Log(_timerCountdown);
-        if (_timerCountdown <= countDown)
+        if (_timerCountdown <= 0f)
         {
             StartingPanel.SetActive(false);
-            Time.timeScale = 1;
+            GameManager.SetActive(true);
             return;
         }
         int _text = (int)_timerCountdown;
