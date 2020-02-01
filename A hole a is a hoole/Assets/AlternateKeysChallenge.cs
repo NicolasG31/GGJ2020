@@ -104,6 +104,7 @@ public class AlternateKeysChallenge : MonoBehaviour
             _currentNbrOfRepetition++;
             _actualIndex = 0;
             MiniGameScript.Instance.SetCounterText((_goalOfRepetition - _currentNbrOfRepetition).ToString());
+            MiniGameScript.Instance.SetInfoText("Alternate between both keys " + (_goalOfRepetition - _currentNbrOfRepetition).ToString() + " times !");
         }
 
         if (_currentNbrOfRepetition >= _goalOfRepetition)
