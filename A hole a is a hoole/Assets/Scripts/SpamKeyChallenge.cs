@@ -23,8 +23,6 @@ public class SpamKeyChallenge : MonoBehaviour
         _inputAction = new InputAction("SerieOfKeysChallenge", binding: "<Keyboard>/#()");
         _inputAction.performed += _ => HasPressedCorrectKey();
         _inputAction.Enable();
-
-        LaunchChallenge();
     }
 
     private void Awake()
@@ -69,7 +67,6 @@ public class SpamKeyChallenge : MonoBehaviour
         char character = (char)unicode;
         string key = character.ToString();
 
-        Debug.Log("Spam Key Challenge, key: " + key);
         _inputAction.ApplyBindingOverride("<Keyboard>/#(" + key + ")");
         _challengeIsPlaying = true;
     }

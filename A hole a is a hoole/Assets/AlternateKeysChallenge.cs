@@ -39,8 +39,6 @@ public class AlternateKeysChallenge : MonoBehaviour
         _inputAction = new InputAction("SerieOfKeysChallenge", binding: "<Keyboard>/#()");
         _inputAction.performed += _ => HasPressedCorrectKey();
         _inputAction.Enable();
-
-        LaunchChallenge();
     }
 
     // Update is called once per frame
