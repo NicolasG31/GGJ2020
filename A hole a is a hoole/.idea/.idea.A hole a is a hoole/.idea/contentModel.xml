@@ -26,6 +26,7 @@
           <e p="ScoringManager.cs" t="Include" />
           <e p="SerieOfKeysChallenge.cs" t="Include" />
           <e p="SpamKeyChallenge.cs" t="Include" />
+          <e p="StartingScript.cs" t="Include" />
           <e p="VolumeManager.cs" t="Include" />
           <e p="WaterMove.cs" t="Include" />
         </e>
