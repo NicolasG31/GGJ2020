@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 1.53
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1295,7 +1295,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -1312,7 +1312,7 @@ ParticleSystem:
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 13878
-        ctime1: 65535
+        ctime1: 32189
         ctime2: 0
         ctime3: 0
         ctime4: 0
@@ -1320,7 +1320,7 @@ ParticleSystem:
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 65535
+        atime1: 32189
         atime2: 0
         atime3: 0
         atime4: 0
@@ -3879,7 +3879,7 @@ ParticleSystem:
   TrailModule:
     enabled: 1
     mode: 0
-    ratio: 1
+    ratio: 0.1
     lifetime:
       serializedVersion: 2
       minMaxState: 0
@@ -4709,8 +4709,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0331db45c91a94348b53e200ac43f507, type: 2}
+  - {fileID: 2100000, guid: 0331db45c91a94348b53e200ac43f507, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4996,12 +4996,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyPadName: 
   isSpilling: 0
-  damages: []
-  keypadUi: {fileID: 0}
-  spillEffect: {fileID: 0}
-  stopSpillEffect: {fileID: 0}
-  gauge: {fileID: 0}
-  duckTape: {fileID: 0}
+  damages:
+  - {fileID: 3964001129244282302}
+  - {fileID: 3964001129203502819}
+  keypadUi: {fileID: 3964001128951603669}
+  spillEffect: {fileID: 3964001127744367703}
+  stopSpillEffect: {fileID: 3964001129396141055}
+  gauge: {fileID: 3964001129328216307}
+  duckTape: {fileID: 2989111909499975647, guid: 6d4ba1e8abf3ccf48ad75a01d968576f,
+    type: 3}
 --- !u!1 &3964001128951603669
 GameObject:
   m_ObjectHideFlags: 0
@@ -5476,7 +5479,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: dbbd0c34a8ce82d47936ad18934c1fba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6a7515c5302a0924fa89f41adedcc33b, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10206,8 +10209,8 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 0331db45c91a94348b53e200ac43f507, type: 2}
+  - {fileID: 2100000, guid: 0331db45c91a94348b53e200ac43f507, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
