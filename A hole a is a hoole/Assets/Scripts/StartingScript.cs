@@ -6,6 +6,7 @@ using TMPro;
 public class StartingScript : MonoBehaviour
 {
     public GameObject StartingPanel;
+    public GameObject ScorePanel;
     public GameObject GameManager;
     public TextMeshProUGUI TextNumber;
     public float _timerCountdown = 6f;
@@ -22,6 +23,7 @@ public class StartingScript : MonoBehaviour
         if (_timerCountdown <= 0f)
         {
             StartingPanel.SetActive(false);
+            ScorePanel.SetActive(true);
             GameManager.SetActive(true);
             return;
         }
