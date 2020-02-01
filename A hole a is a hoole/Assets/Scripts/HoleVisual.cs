@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class HoleVisual : MonoBehaviour
 {
@@ -14,26 +15,16 @@ public class HoleVisual : MonoBehaviour
     public GameObject keypadUi;
     public ParticleSystem spillEffect;
     public ParticleSystem stopSpillEffect;
+    public Image gauge;
 
+    private InputAction _inputAction;
+
+    private float gaugeNum = 1;
     // Start is called before the first frame update
     void Start()
     {
         // A enlever
         //StartHole("A");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-/*        if (Input.GetKey(KeyCode.A))
-        {
-            Debug.Log("caca");
-            if (isSpilling == true)
-                StopSpill();
-        }
-        else
-            Spill();
-            */
     }
 
     public void StartHole(string keypad)
@@ -67,12 +58,16 @@ public class HoleVisual : MonoBehaviour
         // L'eau est retenue
     }
 
-    public void DisplayKeyPad()
+    private void DisplayKeyPad()
     {
         keypadUi.SetActive(true);
         keypadUi.GetComponentInChildren<TextMeshPro>().text = keyPadName;
     }
 
+    public void CompletionPercentage(float perc) // VALEUR DE 0 (JAUGE BASSE) à 1 (HAUGE HAUTE)
+    {
+        gauge.fillAmount = perc;
+    }
     public void StopHole()
     {
         // faire apparaitre un truc de réparation à cet endroit
