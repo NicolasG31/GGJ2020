@@ -10,7 +10,7 @@ public class HoleApparition : MonoBehaviour
     public float apparitionTime = 8f;
     private float _timerApparition = 0.0f;
     private static float apparitionReduceValue = 0.2f;
-    private float _reduceValueApparition = 20f;
+    private float _reduceValueApparition = 10f;
     private float _timerReduceValue = 0.0f;
     float Width = 0f;
     float Height = 0f;

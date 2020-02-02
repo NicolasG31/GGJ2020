@@ -9,7 +9,7 @@ public class RepairTime : MonoBehaviour
     public static RepairTime Instance { get { return _instance; } }
 
     private float _timer = 0.0f;
-    private static float _timeBetweenChanges = 30f;
+    private static float _timeBetweenChanges = 13f;
     private float _timeToRepair = 5.0f;
 
     private void Awake()
