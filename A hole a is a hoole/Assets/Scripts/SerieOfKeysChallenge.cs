@@ -12,7 +12,6 @@ public class SerieOfKeysChallenge : MonoBehaviour
     private int _numberOfKeys = 3;
     private float _timer = 0.0f;
     private static float _timeBetweenChanges = 60f;
-    private Stack<string> _currentSerieOfKeys = new Stack<string>();
     private InputAction _inputAction;
     private float _limitTimer = 0.0f;
     private static float _timeOfLimit = 6f;
@@ -84,36 +83,32 @@ public class SerieOfKeysChallenge : MonoBehaviour
             int unicode = Random.Range(97, 123);
             char character = (char)unicode;
             string key = character.ToString();
-            if (i == 0 || key != _currentSerieOfKeys.Peek())
+            if (i == 0 || !_serieOfKeysStr.Contains(key))
             {
-                _currentSerieOfKeys.Push(key);
+                //_currentSerieOfKeys.Push(key);
                 _serieOfKeysStr += key;
             }
             else
                 i--;
         }
-        _serieOfKeysStr = Reverse(_serieOfKeysStr);
-        _inputAction.ApplyBindingOverride("<Keyboard>/#(" + _currentSerieOfKeys.Peek() + ")");
+        _inputAction.ApplyBindingOverride("<Keyboard>/#(" + _serieOfKeysStr[0] + ")");
         _challengeIsPlaying = true;
 
-        MiniGameScript.Instance.SetInfoText("Press the serie of key above !");
+        MiniGameScript.Instance.SetInfoText("Press the serie of key in the correct order !");
         MiniGameScript.Instance.SetProgress(0);
         MiniGameScript.Instance.SetGameKeys(_serieOfKeysStr);
     }
 
     private void HasPressedCorrectKey()
     {
-        string currentKey = _currentSerieOfKeys.Peek();
-        _currentSerieOfKeys.Pop();
-        if (_currentSerieOfKeys.Count == 0)
+        if (!_challengeIsPlaying)
+            return;
+        _serieOfKeysStr = _serieOfKeysStr.Substring(1);
+        if (_serieOfKeysStr.Length == 0)
             ChallengeSucceed();
         else
-        {
-            currentKey = _currentSerieOfKeys.Peek();
-            _inputAction.ApplyBindingOverride("<Keyboard>/#(" + currentKey + ")");
-        }
-        _serieOfKeysStr = _serieOfKeysStr.Remove(_serieOfKeysStr.Length - 1);
-        Debug.Log("new serie: " + _serieOfKeysStr);
+            _inputAction.ApplyBindingOverride("<Keyboard>/#(" + _serieOfKeysStr[0] + ")");
+
         MiniGameScript.Instance.SetGameKeys(_serieOfKeysStr);
     }
 
@@ -122,7 +117,6 @@ public class SerieOfKeysChallenge : MonoBehaviour
         MiniGameScript.Instance.SetInfoText("Challenge succeeded !");
         StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.ReduceWater(0.075f));
-        Debug.Log("CHALLENGE SUCCEED");
     }
 
     private void ChallengeFailed()
@@ -130,12 +124,10 @@ public class SerieOfKeysChallenge : MonoBehaviour
         MiniGameScript.Instance.SetInfoText("Challenge failed !");
         StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.IncreaseWater(-0.025f));
-        Debug.Log("CHALLENGE FAILED");
     }
 
     private IEnumerator ResetChallenge()
     {
-        _inputAction.ApplyBindingOverride("<Keyboard>/#()");
         _challengeIsPlaying = false;
         _limitTimer = 0.0f;
         yield return new WaitForSeconds(2f);

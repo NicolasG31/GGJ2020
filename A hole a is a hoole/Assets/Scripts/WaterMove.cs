@@ -111,9 +111,8 @@ public class WaterMove : MonoBehaviour
 
     public void ModifyHoleCounter(int modifier)
     {
-        int nbrOfHole = GameObject.FindGameObjectsWithTag("KeyPad").Length;
         holeCounter += modifier;
-        if (holeCounter == nbrOfHole)
+        if (holeCounter == 0)
             waterMoving = false;
         else
             waterMoving = true;

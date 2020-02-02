@@ -36,7 +36,6 @@ public class RepairTime : MonoBehaviour
 
     public float GetRepairTime()
     {
-        Debug.Log("Time to repair: " + _timeToRepair);
         return (_timeToRepair);
     }
 }

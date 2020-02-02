@@ -12,6 +12,7 @@ public class Hole : MonoBehaviour
     private float _totalHoldDuration = 0.0f;
     private float _timeOfPress = 0.0f;
     private HoleApparition _holeApparition;
+    private bool _hasFilledHole = false;
 
     void Start()
     {
@@ -20,7 +21,6 @@ public class Hole : MonoBehaviour
         _holeApparition = FindObjectOfType<HoleApparition>();
 
         string holdDuration = _totalHoldDuration.ToString("0.0").Replace(",", ".");
-        Debug.Log("Assigned Key: " + _assignedKey + " holdDuration: " + holdDuration);
         _pressedKeyboard = new InputAction("press" + _assignedKey, binding: "<Keyboard>/#(" + _assignedKey + ")",
             interactions: "hold(duration=" + holdDuration + ")");
         _pressedKeyboard.started += _ => HasStartedToPress();
@@ -30,7 +30,7 @@ public class Hole : MonoBehaviour
         _holeVisual = GetComponent<HoleVisual>();
 
         _holeVisual.StartHole(_assignedKey.ToUpper());
-        WaterMove.Instance.ModifyHoleCounter(0);
+        WaterMove.Instance.ModifyHoleCounter(1);
     }
 
     private void OnDestroy()
@@ -45,7 +45,10 @@ public class Hole : MonoBehaviour
             _timeOfPress += Time.deltaTime;
             _holeVisual.CompletionPercentage(_timeOfPress / _totalHoldDuration);
             if (_timeOfPress >= _totalHoldDuration)
+            {
+                _hasFilledHole = true;
                 StartCoroutine(FinishedToPress());
+            }
         }
         else if (_timeOfPress > 0)
         {
@@ -58,7 +61,7 @@ public class Hole : MonoBehaviour
     {
         _isPressingKey = true;
         _holeVisual.StopSpill();
-        WaterMove.Instance.ModifyHoleCounter(1);
+        WaterMove.Instance.ModifyHoleCounter(-1);
     }
 
     private IEnumerator FinishedToPress()
@@ -70,13 +73,14 @@ public class Hole : MonoBehaviour
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
         yield return new WaitForSeconds(0.1f);
-        WaterMove.Instance.ModifyHoleCounter(-1);
     }
 
     private void CancelledPress()
     {
+        if (_hasFilledHole)
+            return;
         _isPressingKey = false;
         _holeVisual.Spill();
-        WaterMove.Instance.ModifyHoleCounter(-1);
+        WaterMove.Instance.ModifyHoleCounter(1);
     }
 }

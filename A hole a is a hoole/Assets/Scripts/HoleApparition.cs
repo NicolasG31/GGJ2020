@@ -18,7 +18,7 @@ public class HoleApparition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Width = 9.0f;
+        Width = 7.5f;
         Height = 4.0f;
     }
 

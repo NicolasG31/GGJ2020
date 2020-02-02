@@ -81,6 +81,8 @@ public class SpamKeyChallenge : MonoBehaviour
 
     private void HasPressedCorrectKey()
     {
+        if (!_challengeIsPlaying)
+            return;
         _countOfSpam++;
         MiniGameScript.Instance.SetCounterText((_nbrToSpam - _countOfSpam).ToString());
         MiniGameScript.Instance.SetInfoText("Press the " + _keyToSpam + " key " + (_nbrToSpam - _countOfSpam).ToString() + " times !");
@@ -106,7 +108,6 @@ public class SpamKeyChallenge : MonoBehaviour
 
     private IEnumerator ResetChallenge()
     {
-        _inputAction.ApplyBindingOverride("<Keyboard>/#()");
         _keyToSpam = "";
         _countOfSpam = 0;
         _challengeIsPlaying = false;

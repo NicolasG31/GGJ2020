@@ -97,6 +97,8 @@ public class AlternateKeysChallenge : MonoBehaviour
 
     private void HasPressedCorrectKey()
     {
+        if (!_challengeIsPlaying)
+            return;
         if (_actualIndex == 0)
             _actualIndex = 1;
         else
@@ -118,7 +120,6 @@ public class AlternateKeysChallenge : MonoBehaviour
         MiniGameScript.Instance.SetInfoText("Challenge succeeded !");
         StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.ReduceWater(0.075f));
-        Debug.Log("CHALLENGE SUCCEED");
     }
 
     private void ChallengeFailed()
@@ -126,12 +127,10 @@ public class AlternateKeysChallenge : MonoBehaviour
         MiniGameScript.Instance.SetInfoText("Challenge failed !");
         StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.IncreaseWater(-0.025f));
-        Debug.Log("CHALLENGE FAILED");
     }
 
     private IEnumerator ResetChallenge()
     {
-        _inputAction.ApplyBindingOverride("<Keyboard>/#()");
         _challengeIsPlaying = false;
         _limitTimer = 0.0f;
         _actualIndex = 0;
