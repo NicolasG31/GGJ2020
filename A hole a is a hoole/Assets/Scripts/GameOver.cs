@@ -6,7 +6,7 @@ public class GameOver : MonoBehaviour
 {
     public GameObject GameOverPanel;
     public AudioSource loseSound;
-    public bool EndGame = false;
+    public bool EndGame = false, playSound = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,12 +22,16 @@ public class GameOver : MonoBehaviour
             Debug.Log("GAME OVER");
             Time.timeScale = 0;
             GameOverPanel.SetActive(true);
+            if (!playSound)
+            {
+                loseSound.Play();
+                playSound = true;
+            }
         }
     }
 
     public void GameStop()
     {
-        loseSound.Play();
         EndGame = true;
     }
 }
