@@ -24,6 +24,7 @@
           <e p="HoleVisual.cs" t="Include" />
           <e p="MainCanvasScript.cs" t="Include" />
           <e p="PauseMenu.cs" t="Include" />
+          <e p="RandomBackground.cs" t="Include" />
           <e p="RepairTime.cs" t="Include" />
           <e p="ScoringManager.cs" t="Include" />
           <e p="SerieOfKeysChallenge.cs" t="Include" />
