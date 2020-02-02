@@ -5,12 +5,13 @@ using UnityEngine;
 public class GameOver : MonoBehaviour
 {
     public GameObject GameOverPanel;
+    public AudioSource loseSound;
     public bool EndGame = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -26,6 +27,7 @@ public class GameOver : MonoBehaviour
 
     public void GameStop()
     {
+        loseSound.Play();
         EndGame = true;
     }
 }

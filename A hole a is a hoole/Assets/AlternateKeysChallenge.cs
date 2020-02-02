@@ -8,6 +8,7 @@ public class AlternateKeysChallenge : MonoBehaviour
     private static AlternateKeysChallenge _instance;
 
     public static AlternateKeysChallenge Instance { get { return _instance; } }
+    public AudioSource loseSound, winSound;
 
     private InputAction _inputAction;
     private float _limitTimer = 0.0f;
@@ -117,6 +118,7 @@ public class AlternateKeysChallenge : MonoBehaviour
 
     private void ChallengeSucceed()
     {
+        winSound.Play();
         MiniGameScript.Instance.SetInfoText("Challenge succeeded !");
         StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.ReduceWater(0.075f));
@@ -124,6 +126,7 @@ public class AlternateKeysChallenge : MonoBehaviour
 
     private void ChallengeFailed()
     {
+        loseSound.Play();
         MiniGameScript.Instance.SetInfoText("Challenge failed !");
         StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.IncreaseWater(-0.025f));

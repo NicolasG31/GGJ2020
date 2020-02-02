@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,7 +7,12 @@ public class SpamKeyChallenge : MonoBehaviour
 {
     private static SpamKeyChallenge _instance;
 
-    public static SpamKeyChallenge Instance { get { return _instance; } }
+    public static SpamKeyChallenge Instance
+    {
+        get { return _instance; }
+    }
+
+    public AudioSource loseSound, winSound;
 
     private InputAction _inputAction;
     private int _nbrToSpam = 6;
@@ -68,7 +73,7 @@ public class SpamKeyChallenge : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         int unicode = Random.Range(97, 123);
-        char character = (char)unicode;
+        char character = (char) unicode;
         _keyToSpam = character.ToString();
 
         _inputAction.ApplyBindingOverride("<Keyboard>/#(" + _keyToSpam + ")");
@@ -85,13 +90,15 @@ public class SpamKeyChallenge : MonoBehaviour
             return;
         _countOfSpam++;
         MiniGameScript.Instance.SetCounterText((_nbrToSpam - _countOfSpam).ToString());
-        MiniGameScript.Instance.SetInfoText("Press the " + _keyToSpam + " key " + (_nbrToSpam - _countOfSpam).ToString() + " times !");
+        MiniGameScript.Instance.SetInfoText("Press the " + _keyToSpam + " key " +
+                                            (_nbrToSpam - _countOfSpam).ToString() + " times !");
         if (_countOfSpam >= _nbrToSpam)
             ChallengeSucceed();
     }
 
     private void ChallengeSucceed()
     {
+        winSound.Play();
         MiniGameScript.Instance.SetInfoText("Challenge succeeded !");
         StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.ReduceWater(0.075f));
@@ -100,6 +107,7 @@ public class SpamKeyChallenge : MonoBehaviour
 
     private void ChallengeFailed()
     {
+        loseSound.Play();
         MiniGameScript.Instance.SetInfoText("Challenge failed !");
         StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.IncreaseWater(-0.025f));

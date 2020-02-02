@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +14,9 @@ public class HoleApparition : MonoBehaviour
     private float _timerReduceValue = 0.0f;
     float Width = 0f;
     float Height = 0f;
+
+    // Sound management
+    public AudioSource holeApparitionSound, waterStreamSound, ductTapeSound;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +63,8 @@ public class HoleApparition : MonoBehaviour
             }
 
             Holes.Add(Instantiate(PrefabHole, new Vector3(x, y, 0), Quaternion.identity));
+            holeApparitionSound.Play();
+            waterStreamSound.Play();
             GetComponent<WaterMove>().waterMoving = true;
             GetComponent<WaterMove>().IncreaseWaterSpeed();
         }
@@ -70,6 +75,8 @@ public class HoleApparition : MonoBehaviour
         if (Holes.Count > 0)
         {
             Holes.Remove(Hole);
+            ductTapeSound.Play();
+
             GetComponent<WaterMove>().ReduceWaterSpeed();
             GetComponent<ScoringManager>().IncreaseScore(100);
         }

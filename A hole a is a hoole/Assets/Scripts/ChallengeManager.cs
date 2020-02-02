@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +7,7 @@ public class ChallengeManager : MonoBehaviour
     private static ChallengeManager _instance;
 
     public static ChallengeManager Instance { get { return _instance; } }
+    public AudioSource alertSound;
 
     private float _timer = 0.0f;
     private int _timeBetweenChallenge = 999;
@@ -47,6 +48,7 @@ public class ChallengeManager : MonoBehaviour
 
     private void LaunchChallenge(int challIndx)
     {
+        alertSound.Play();
         switch (challIndx)
         {
             case 0:

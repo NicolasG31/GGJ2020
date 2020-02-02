@@ -13,6 +13,7 @@
             <e p="toto.cs" t="Include" />
           </e>
         </e>
+        <e p="mainAudioVolume.cs" t="Include" />
         <e p="MiniGameScript.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="AssignKey.cs" t="Include" />

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,6 +8,7 @@ public class SerieOfKeysChallenge : MonoBehaviour
     private static SerieOfKeysChallenge _instance;
 
     public static SerieOfKeysChallenge Instance { get { return _instance; } }
+    public AudioSource loseSound, winSound;
 
     private int _numberOfKeys = 3;
     private float _timer = 0.0f;
@@ -114,6 +115,7 @@ public class SerieOfKeysChallenge : MonoBehaviour
 
     private void ChallengeSucceed()
     {
+        winSound.Play();
         MiniGameScript.Instance.SetInfoText("Challenge succeeded !");
         StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.ReduceWater(0.075f));
@@ -121,6 +123,7 @@ public class SerieOfKeysChallenge : MonoBehaviour
 
     private void ChallengeFailed()
     {
+        loseSound.Play();
         MiniGameScript.Instance.SetInfoText("Challenge failed !");
         StartCoroutine(ResetChallenge());
         StartCoroutine(WaterMove.Instance.IncreaseWater(-0.025f));
