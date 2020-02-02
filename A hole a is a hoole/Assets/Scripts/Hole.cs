@@ -67,6 +67,7 @@ public class Hole : MonoBehaviour
 
     private IEnumerator FinishedToPress()
     {
+        AssignKey.Instance.RemoveKey(_assignedKey);
         _holeApparition.DestroyAHole(gameObject);
         _isPressingKey = false;
         _holeVisual.StopHole();

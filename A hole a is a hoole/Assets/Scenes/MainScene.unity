@@ -902,7 +902,7 @@ PrefabInstance:
     - target: {fileID: 7115706267927631991, guid: ce3055dafa58041eca0540a45356d770,
         type: 3}
       propertyPath: apparitionTime
-      value: 6
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 7115706267927631991, guid: ce3055dafa58041eca0540a45356d770,
         type: 3}
