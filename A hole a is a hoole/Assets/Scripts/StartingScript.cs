@@ -20,7 +20,7 @@ public class StartingScript : MonoBehaviour
     private void Update()
     {
         _timerCountdown -= Time.deltaTime;
-        if (_timerCountdown <= 0f)
+        if (_timerCountdown <= 0.8f)
         {
             StartingPanel.SetActive(false);
             ScorePanel.SetActive(true);

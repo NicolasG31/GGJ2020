@@ -67,7 +67,10 @@ public class HoleVisual : MonoBehaviour
 
     public void CompletionPercentage(float perc) // VALEUR DE 0 (JAUGE BASSE) à 1 (HAUGE HAUTE)
     {
-        gauge.fillAmount = perc;
+        if (perc <= 0.001)
+            gauge.fillAmount = 100;
+        else
+            gauge.fillAmount = perc;
     }
 
     public void StopHole()

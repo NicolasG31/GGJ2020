@@ -37,7 +37,7 @@ public class ChallengeManager : MonoBehaviour
         if (_timer >= _timeBetweenChallenge)
         {
             int newChallengeIndex = Random.Range(0, _qntOfchallenge);
-            while (newChallengeIndex != _currentChallengeIndex)
+            while (newChallengeIndex == _currentChallengeIndex)
                 newChallengeIndex = Random.Range(0, _qntOfchallenge);
             _currentChallengeIndex = newChallengeIndex;
             LaunchChallenge(_currentChallengeIndex);
