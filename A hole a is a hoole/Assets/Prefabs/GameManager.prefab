@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8718060014703833949
+--- !u!1 &2166154224040717723
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8718060014703833951}
-  - component: {fileID: 4217329978302417798}
-  - component: {fileID: 4217329978302417792}
-  - component: {fileID: 4217329978302417799}
-  - component: {fileID: 6026630340720260314}
+  - component: {fileID: 7561950775732106801}
+  - component: {fileID: 2166154223169606194}
+  - component: {fileID: 4701967563006226143}
+  - component: {fileID: 4748597874834587496}
+  - component: {fileID: 7115706267927631991}
+  - component: {fileID: 2166154224040717724}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -20,13 +21,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8718060014703833951
+--- !u!4 &7561950775732106801
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8718060014703833949}
+  m_GameObject: {fileID: 2166154224040717723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -12.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,29 +35,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4217329978302417798
+--- !u!114 &2166154223169606194
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8718060014703833949}
+  m_GameObject: {fileID: 2166154224040717723}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 060f6dcf5f8965e4bbd221c4cd2baf7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waterWall: {fileID: 3764141257358765893, guid: 137a2cdb280481740a6c3d569e31be21,
-    type: 3}
+  waterWall: {fileID: 0}
   waterMoving: 0
   waterSpeed: 0.005
---- !u!114 &4217329978302417792
+--- !u!114 &4701967563006226143
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8718060014703833949}
+  m_GameObject: {fileID: 2166154224040717723}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f24a42b1023042b4aac140d709c5ab35, type: 3}
@@ -64,27 +64,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverPanel: {fileID: 0}
   EndGame: 0
---- !u!114 &4217329978302417799
+--- !u!114 &4748597874834587496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8718060014703833949}
+  m_GameObject: {fileID: 2166154224040717723}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2dd1e1e0663b6154092b33ba509f7811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreText: {fileID: 0}
   Score: 0
   valueScoreTime: 1
---- !u!114 &6026630340720260314
+  scoreMove: 1
+--- !u!114 &7115706267927631991
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8718060014703833949}
+  m_GameObject: {fileID: 2166154224040717723}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 547f44d9bbe6eb04a81fe61069235cbd, type: 3}
@@ -92,7 +94,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PrefabHole: {fileID: 3964001128580414994, guid: 7ad0bacfcf962a6499083a79830d28c3,
     type: 3}
-  apparitionTimeStart: 8
-  apparitionTimeEnd: 2
-  apparitionTimeReduceValue: 0.3
   apparitionTime: 8
+--- !u!114 &2166154224040717724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2166154224040717723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f61c43a87afe74eb89e5f9fcf9b087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PauseMenuPanel: {fileID: 0}
+  pause: 0

@@ -89,7 +89,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartingPanel: {fileID: 6315085739735460074}
+  ScorePanel: {fileID: 0}
+  GameManager: {fileID: 0}
   TextNumber: {fileID: 6315085741191465336}
+  _timerCountdown: 6
 --- !u!1 &6315085740876471845
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +259,7 @@ GameObject:
   - component: {fileID: 6315085741191465343}
   - component: {fileID: 6315085741191465337}
   - component: {fileID: 6315085741191465336}
+  - component: {fileID: 6315085740434556079}
   m_Layer: 5
   m_Name: Number
   m_TagString: Untagged
@@ -400,3 +404,22 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &6315085740434556079
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6315085741191465342}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9112a3ab098ac6b48a4f661bb39c9f8a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
