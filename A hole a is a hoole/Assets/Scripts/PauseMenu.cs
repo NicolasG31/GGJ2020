@@ -9,19 +9,18 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseMenuPanel;
     public bool pause = false;
     private InputAction _inputAction;
+    private Keyboard _keyboard;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _keyboard = Keyboard.current;
     }
 
     // Update is called once per frame
     void Update()
     {
-        var keyboard = Keyboard.current;
-
-        if (keyboard.escapeKey.wasPressedThisFrame)
+        if (_keyboard.escapeKey.wasPressedThisFrame)
             PauseGame();
 
         if (pause)

@@ -27,9 +27,11 @@ public class RepairTime : MonoBehaviour
     private void Update()
     {
         _timer += Time.deltaTime;
-        if (_timer >= _timeBetweenChanges && _timeToRepair > 0.2f)
+        if (_timer >= _timeBetweenChanges)
         {
             _timeToRepair -= 0.2f;
+            if (_timeToRepair <= 0.2f)
+                _timeToRepair = 0.2f;
             _timer = 0f;
         }
     }

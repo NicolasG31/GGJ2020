@@ -24,9 +24,6 @@ public class HoleVisual : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // A enlever
-//        StartHole("A");
-//        StopHole();
     }
 
     public void StartHole(string keypad)

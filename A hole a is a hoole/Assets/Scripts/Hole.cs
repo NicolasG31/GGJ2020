@@ -36,6 +36,7 @@ public class Hole : MonoBehaviour
     private void OnDestroy()
     {
         _pressedKeyboard.Disable();
+        _pressedKeyboard.Dispose();
     }
 
     private void Update()

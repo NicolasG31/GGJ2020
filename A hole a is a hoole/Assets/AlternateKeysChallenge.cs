@@ -14,7 +14,7 @@ public class AlternateKeysChallenge : MonoBehaviour
     private float _limitTimer = 0.0f;
     private static float _timeOfLimit = 6f;
     private float _timer = 0.0f;
-    private static float _timeBetweenChanges = 80f;
+    private static float _timeBetweenChanges = 40f;
     private int _goalOfRepetition = 4;
     private bool _challengeIsPlaying = false;
     private string[] _keysToAlternate;
@@ -51,7 +51,7 @@ public class AlternateKeysChallenge : MonoBehaviour
         {
             if (_goalOfRepetition < 20)
                 _goalOfRepetition += 2;
-            _timer = 0.0f;
+            _timer = 0f;
         }
 
         if (_challengeIsPlaying)
@@ -63,7 +63,7 @@ public class AlternateKeysChallenge : MonoBehaviour
         if (_limitTimer >= _timeOfLimit)
         {
             ChallengeFailed();
-            _limitTimer = 0.0f;
+            _limitTimer = 0f;
         }
     }
 

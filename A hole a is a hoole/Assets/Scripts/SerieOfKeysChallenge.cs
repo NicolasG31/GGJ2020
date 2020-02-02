@@ -12,7 +12,7 @@ public class SerieOfKeysChallenge : MonoBehaviour
 
     private int _numberOfKeys = 3;
     private float _timer = 0.0f;
-    private static float _timeBetweenChanges = 60f;
+    private static float _timeBetweenChanges = 40f;
     private InputAction _inputAction;
     private float _limitTimer = 0.0f;
     private static float _timeOfLimit = 6f;
@@ -50,19 +50,21 @@ public class SerieOfKeysChallenge : MonoBehaviour
         if (_timer >= _timeBetweenChanges)
         {
             _numberOfKeys++;
-            _timer = 0.0f;
+            if (_numberOfKeys >= 9)
+                _numberOfKeys = 9;
+            _timer = 0f;
         }
 
         if (_challengeIsPlaying)
         {
             MiniGameScript.Instance.SetProgress((int)((_limitTimer / _timeOfLimit) * 100));
             _limitTimer += Time.deltaTime;
-        }
 
-        if (_limitTimer >= _timeOfLimit)
-        {
-            ChallengeFailed();
-            _limitTimer = 0.0f;
+            if (_limitTimer >= _timeOfLimit)
+            {
+                ChallengeFailed();
+                _limitTimer = 0f;
+            }
         }
     }
 

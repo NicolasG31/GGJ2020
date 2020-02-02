@@ -17,7 +17,7 @@ public class SpamKeyChallenge : MonoBehaviour
     private InputAction _inputAction;
     private int _nbrToSpam = 6;
     private float _timer = 0.0f;
-    private static float _timeBetweenChanges = 60f;
+    private static float _timeBetweenChanges = 40f;
     private int _countOfSpam = 0;
     private float _limitTimer = 0.0f;
     private static float _timeOfLimit = 6f;
@@ -54,7 +54,9 @@ public class SpamKeyChallenge : MonoBehaviour
         if (_timer >= _timeBetweenChanges)
         {
             _nbrToSpam += 2;
-            _timer = 0.0f;
+            if (_nbrToSpam > 16)
+                _nbrToSpam = 16;
+            _timer = 0f;
         }
 
         if (_challengeIsPlaying)
