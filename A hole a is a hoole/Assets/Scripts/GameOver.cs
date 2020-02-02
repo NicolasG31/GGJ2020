@@ -25,6 +25,8 @@ public class GameOver : MonoBehaviour
             if (!playSound)
             {
                 loseSound.Play();
+                GetComponent<ScoringManager>().scoreMove = !GetComponent<ScoringManager>().scoreMove;
+                GetComponent<WaterMove>().waterMoving = !GetComponent<WaterMove>().waterMoving;
                 playSound = true;
             }
         }
