@@ -25,8 +25,8 @@ public class ScoringManager : MonoBehaviour
 
     public void IncreaseScore(float value = 0)
     {
-        Score += (Time.deltaTime / 1000) + value;
-        int _score = (int)Score;
+        Score += 1 + value;
+        int _score = ((int)Score / 1000);
         ScoreText.SetText(_score.ToString());
     }
 }
