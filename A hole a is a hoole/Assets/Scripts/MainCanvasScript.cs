@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Quaternion = UnityEngine.Quaternion;
+using Random = System.Random;
+using Vector3 = UnityEngine.Vector3;
 
 public class MainCanvasScript : MonoBehaviour
 {
     public Button startButton, optionButton, exitButton;
     public AudioSource audioData;
     public GameObject fishPrefab;
-    public GameObject fishFix;
 
-    private GameObject fish, fish2;
+    public Sprite[] sprites;
+
+    private float _timer = 0.0f;
+    private List<GameObject> _fishList;
 
     void Start()
     {
@@ -20,16 +26,33 @@ public class MainCanvasScript : MonoBehaviour
         optionButton.onClick.AddListener(OnOptionButton);
         exitButton.onClick.AddListener(OnExitButton);
 
-        fish = Instantiate(fishPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        fish2 = Instantiate(fishPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        _fishList = new List<GameObject>();
+
+        GameObject fish = Instantiate(fishPrefab, new Vector3(0, 0, 0), Quaternion.identity,
+            GameObject.FindGameObjectWithTag("Canvas").transform);
+
+        _fishList.Add(fish);
     }
 
     private void Update()
     {
-        fish.transform.Translate(1, 1, 0);
-        fish2.transform.Translate(1, 1, 1);
-        fishFix.transform.Translate(1, 1, 0);
-        fishFix.transform.Rotate(1, 1, 0);
+        _timer += Time.deltaTime;
+        if (_timer > 2.0f)
+        {
+            Random random = new Random();
+
+            GameObject fish = Instantiate(fishPrefab, new Vector3(random.Next(1920), random.Next(1080), 0), Quaternion.identity,
+                GameObject.FindGameObjectWithTag("Canvas").transform);
+            fish.GetComponent<Image>().sprite = sprites[random.Next(4)];
+            _fishList.Add(fish);
+            _timer = _timer - 2.0f;
+        }
+
+        foreach (GameObject obj in _fishList)
+        {
+            obj.transform.Translate(1, 2, 0);
+            obj.transform.Rotate(1, 1, 0);
+        }
     }
 
     void OnStartButton()
