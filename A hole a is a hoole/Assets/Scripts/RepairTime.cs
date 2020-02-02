@@ -30,8 +30,8 @@ public class RepairTime : MonoBehaviour
         if (_timer >= _timeBetweenChanges)
         {
             _timeToRepair -= 0.2f;
-            if (_timeToRepair <= 0.2f)
-                _timeToRepair = 0.2f;
+            if (_timeToRepair <= 0.5f)
+                _timeToRepair = 0.5f;
             _timer = 0f;
         }
     }
