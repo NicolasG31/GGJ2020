@@ -10,6 +10,9 @@ public class ScoringManager : MonoBehaviour
     public float valueScoreTime = 1;
     public bool scoreMove = true;
 
+    public float apparitionTime = 1f;
+    private float _timerApparition = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +23,21 @@ public class ScoringManager : MonoBehaviour
     void Update()
     {
         if (scoreMove)
-            IncreaseScore(valueScoreTime);
+        {
+            _timerApparition += Time.deltaTime;
+            if (_timerApparition >= apparitionTime)
+            {
+                IncreaseScore(valueScoreTime);
+                _timerApparition = 0f;
+            }
+        }
+            
     }
 
-    public void IncreaseScore(float value = 0)
+    public void IncreaseScore(float value = 1f)
     {
-        Score += 1 + value;
-        int _score = ((int)Score / 1000);
+        Score += value;
+        int _score = ((int)Score);
         ScoreText.SetText(_score.ToString());
     }
 }
