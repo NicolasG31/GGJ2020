@@ -53,6 +53,7 @@ public class HoleApparition : MonoBehaviour
             float x = Random.Range(-Width, Width);
             float y = Random.Range(-Height, Height);
 
+            int nbrOfLoop = 0;
             for (int i = 0; i < Holes.Count; i++)
             {
                 if ((Mathf.Abs((x - Holes[i].transform.position.x)) < 0.3f)
@@ -62,6 +63,7 @@ public class HoleApparition : MonoBehaviour
                     y = Random.Range(-Height, Height);
                     i = 0;
                 }
+                nbrOfLoop++;
             }
 
             Holes.Add(Instantiate(PrefabHole, new Vector3(x, y, 0), Quaternion.identity));
