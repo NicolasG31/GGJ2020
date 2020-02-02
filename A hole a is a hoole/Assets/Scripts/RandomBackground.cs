@@ -11,7 +11,6 @@ public class RandomBackground : MonoBehaviour
     void Start()
     {
         int num = Random.Range(0, 3);
-        Debug.Log(num);
         GetComponent<Image>().sprite = backgrounds[num];
     }
 }

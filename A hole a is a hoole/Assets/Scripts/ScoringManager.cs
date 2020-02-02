@@ -13,7 +13,7 @@ public class ScoringManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,7 +25,7 @@ public class ScoringManager : MonoBehaviour
 
     public void IncreaseScore(float value = 0)
     {
-        Score += (value - (Time.deltaTime / 10000)) / 100;
+        Score += (Time.deltaTime / 1000) + value;
         int _score = (int)Score;
         ScoreText.SetText(_score.ToString());
     }
